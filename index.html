@@ -22,7 +22,7 @@
         }
 
         #setup-screen, #results-screen {
-            background: linear-gradient(170deg, #E0E7FF 0%, #f0f2f5 30%, #f0f2f5 70%, #CFD8DC 100%);
+            background: linear-gradient(170deg, #c7d2fe 0%, #f0f2f5 50%, #b0bec5 100%);
         }
 
         .card {
@@ -74,7 +74,7 @@
             outline: none;
         }
 
-        /* --- Original Test Environment Styles (Untouched) --- */
+        /* --- Original Test Environment Styles --- */
         #app-container {
             display: flex;
             flex-direction: column;
@@ -111,8 +111,18 @@
         #flag-button.flagged:hover { background-color: #f59e0b; border-color: #f59e0b; }
 
         .main-content-area { flex-grow: 1; display: flex; overflow: hidden; padding: 1rem; gap: 1rem; }
-        .passage-column, .question-column { flex: 0 0 50%; overflow-y: auto; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 0.375rem; background-color: #ffffff; height: 100%; transition: font-size 0.2s ease; }
-        .question-column { flex: 0 0 50%; position: relative; }
+        
+        /* UPDATED: Column widths changed to 60/40 split */
+        .passage-column {
+            flex: 0 0 60%;
+            overflow-y: auto; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 0.375rem; background-color: #ffffff; height: 100%; transition: font-size 0.2s ease;
+        }
+        .question-column {
+            flex: 0 0 40%;
+            overflow-y: auto; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 0.375rem; background-color: #ffffff; height: 100%; transition: font-size 0.2s ease;
+            position: relative;
+        }
+
         .selected-answer { background-color: #bfdbfe !important; border-color: #3b82f6 !important; }
         .nav-answered { background-color: #a7f3d0; }
         .nav-current { border: 2px solid #3b82f6 !important; font-weight: bold; }
@@ -151,7 +161,7 @@
         @media (max-width: 768px) {
             #app-container { height: auto; margin: 0.5rem; }
             .main-content-area { flex-direction: column; padding: 0.5rem; gap: 0.5rem; }
-            .passage-column, .question-column { flex-basis: auto; width: 100%; height: auto; max-height: 40vh; padding: 0.75rem; }
+            .passage-column, .question-column { flex-basis: auto; width: 100%; } /* Reverts to block-level stacking on mobile */
             .header-bar, .footer-bar { padding: 0.5rem 1rem; }
             .header-bar span, .footer-bar button, .font-size-button { font-size: 0.8rem; }
             #review-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
@@ -333,46 +343,36 @@
     </div>
 
     <script>
-        // --- Data ---
+        // --- Data & State (unchanged) ---
         const passages = [
-            // Passage 1: Nature
             `From the first blush of dawn to the final hush of twilight, nature choreographs an endless symphony of wonder. Sunlight filters through ancient canopies, scattering coins of gold that dance across forest floors, and every leaf seems to whisper a secret carried from distant stars. A river meanders nearby, its crystal currents polishing stones into stories, singing the patient song of persistence that carves mountains and nourishes valleys. Along its banks, wildflowers stand like bright ideas, bold splashes of color proclaiming that renewal is always possible.\nLift your gaze and the sky becomes an atlas of freedom. Clouds unfurl like vast white sails, reminding dreamers that horizons are meant to be pursued, not feared. At dusk, the heavens ignite, layering tangerine, rose, and amethyst into a vivid promise that endings are only beginnings painted in softer hues. When darkness finally settles, constellations emerge, stitching a quiet philosophy across the velvet firmament: everything is connected, and every spark matters.\nYet the true beauty of nature unfolds in its subtle invitations to belong. The scent of rain on thirsty soil, known as petrichor, urges us to breathe deeper and remember our own capacity for renewal. The humble moss that cushions a fallen log teaches resilience by thriving in places others overlook. Even the hush between birdsong and breeze offers a space for reflection, a gentle pause where new ideas can root.\nIn nature's embrace, time loosens its grip. A single sunrise can reset the weary heart, and the rhythmic pulse of ocean waves can coax peace to the surface of the busiest mind. Each season gifts its unique wisdom: spring's courage to begin, summer's permission to flourish, autumn's art of graceful release, and winter's lesson in quiet strength.\nWhen we answer that call-planting gardens on rooftops, designing cities that breathe, protecting rivers like sacred veins-we step into our rightful role as co-creators. In every thoughtful footprint and every seed of compassion we sow, the planet's beauty is mirrored within us, flourishing toward a future as radiant as dawn, for all life everywhere.`,
-            // Passage 2: Strategic Divestment
             `Strategic divestment is often mistaken for waving a white flag, yet in a modern playbook it resembles careful pruning rather than surrender. By relinquishing a non-core business line, leadership is not discarding potential; it is concentrating sunlight on the branches most likely to bear fruit. In one recent example, a global manufacturer sold its low-margin chemicals arm and channelled the proceeds into hydrogen research, trading yesterday's cash flow for tomorrow's relevance.\nDivestment also removes what analysts call "intangible drag." Legacy factories kept alive by sentimentality can consume invisible bandwidth-executive attention, R & D funding, even employer-brand goodwill. Like luggage left on a moving train, such assets feel safe until the next curve tests momentum. The investor community frequently rewards the firm that moves first, interpreting action as proof of strategic clarity; laggards, by contrast, watch valuations sag under the weight of indecision.\nYet pruning must be timed and sequenced. A rushed sale can trigger talent flight, customer anxiety and brand dilution that overshadows any capital windfall. The best divestment stories therefore read like well-edited manuscripts: what is omitted sharpens what remains on the page. Boards that succeed typically pair a clear investment thesis ("double down on digital platforms") with a human narrative that explains why the sale benefits employees, suppliers and communities rather than merely satisfying quarterly metrics.\nFinally, divestment can serve as a cultural signal. When leaders let go of comfort-zone operations, they remind the organisation that identity is defined by purpose, not by the relics of past success. In that sense, strategic divestment is less a subtraction than an exchange: a deliberate trade of familiarity for focus. Done well, it becomes a forward-looking covenant-evidence that the firm is willing to rewrite its own script before the market forces a harsher edit.`,
-            // Passage 3: Fine Chinaware
             `Fine chinaware occupies a paradoxical space: both fragile heirloom and resilient cultural messenger. From the first porcelain fired in Jingdezhen kilns to contemporary studio pieces, its translucence is not mere decoration but the visible result of molecular harmony-kaolin, feldspar and quartz fused at temperatures that would melt steel. Collectors praise "whisper walls," those rims so thin they ring when tapped, yet strength hides within that delicacy; properly vitrified porcelain resists thermal shock better than thick earthenware.\nHistorically, chinaware shaped trade routes and even diplomacy. Seventeenth-century European courts coveted blue-and-white bowls not simply for tea ceremony, but for the message of refinement they broadcast across banqueting tables. When Meissen chemists finally unlocked the Chinese formula in 1710, the breakthrough fuelled a wave of industrial espionage and cross-border collaboration, proving that technology can migrate while mystique lingers.\nToday, artisans revive hand-painting and over-glaze gilding, yet many also slip smart sensors beneath the glaze, enabling restaurants to track inventory or detect hairline cracks before they bloom. Such hybrid pieces remind us that preserving tradition does not require halting innovation; rather, each firing can embed both memory and microchip.\nCritics occasionally dismiss modern porcelain as a vanity purchase in an age of biodegradable bamboo plates. However, the environmental calculus is subtler: a single well-cared-for porcelain set can outlast dozens of disposable alternatives, its embodied energy amortised over generations. Thus, the true sustainability of chinaware lies in its invitation to linger-at meals, in craft, and in time itself-encouraging owners to choose permanence over haste.`,
-            // Passage 4: Grief and Memory
             `It is nearly two years since Daniel's laugh last echoed through these rooms, yet most mornings I still set two cups on the oak table before I remember. The second cup has become a ritual of surrender rather than denial; steam curls upward like the conversation we never finished, reminding me that presence can be poured even when a chair is empty. His corduroy jacket still hangs by the garden door, pockets full of seed packets scribbled with hopeful dates. Come spring I scatter them exactly as he once did, trusting his handwriting more than any almanac. The marigolds bloom late but riotous, as though determined to prove that instructions penned by a steady hand can outlast its pulse.\nI wind his pocket-watch every Sunday. The mechanism-brass gears and patient clicks-keeps perfect time, an irony he would have enjoyed, considering how often he arrived fashionably late to weddings and early to farewells. When the watch rests against my palm I feel less like a widow and more like the caretaker of an unbroken promise: that the ordinary can be sacred if tended daily.\nMemory, I have learned, is not a museum exhibit but a migratory bird. Some days it lands gently, offering a song; on others it startles at the slightest noise and leaves me staring at the sky it occupies. Still, I keep the windows open. Daniel taught me that grief, like compost, can coax life from what appears spent. Yesterday I laughed aloud while repainting the porch rail he once patched with mismatched screws. The colour is a shade brighter than before; I think he would approve he always said a home should reflect the weather of its inhabitants, and mine is clearing.\nI have not moved the garden bench where we planned next year's journeys. I sit there tonight, and the moonlight does the talking. Its silver grammar assures me that love, properly understood, is never once-spoken. It is revised, retold, and if we are brave-released into blooming silence. Somewhere between then and now, absence has learned to speak the language of possibility for us.`
         ];
         const questions = [
-            // Questions for Passage 1
             { passageIndex: 0, type: 'Inference/Conclusion', text: "Which statement would the author most likely endorse?", options: ["Authentic awe is found only by retreating from human-built environments.", "Attempting to co-create with nature is presumptuous because nature thrives without us.", "Small, deliberate acts-such as rooftop gardens or river stewardship-align humanity with nature's creative processes.", "Nature's most profound lessons emerge only through dramatic seasonal extremes."], correctAnswer: "C", explanation: `The passage explicitly praises "planting gardens on rooftops" and "protecting rivers" as ways we "step into our rightful role as co-creators." Option A is incorrect because the text values urban greening. Option B is contradicted by the co-creator theme. Option D over-emphasises extremes; the author finds wisdom in subtle details and every season.` },
             { passageIndex: 0, type: 'Direct Retrieval/Inference', text: "Which of the following assertions is best supported by the passage?", options: ["The river's patient flow polishes stones and nourishes valleys, yet it is never depicted as altering mountains.", "Clouds are portrayed as fleeting illusions that warn against chasing unattainable dreams.", "Constellations are invoked to argue that each celestial spark exists in fundamental isolation from the others.", "Winter is characterised as a period of \"quiet strength,\" offering its own instructive value to humankind."], correctAnswer: "D", explanation: `The passage states "winter's lesson in quiet strength," directly confirming its instructive value. Option A contradicts the line that the river "carves mountains." Option B misreads the metaphor about clouds, which are meant to encourage pursuing horizons. Option C reverses the passage's point that "everything is connected."` },
             { passageIndex: 0, type: 'Purpose/Inference', text: "The author's reference to the scent of rain on thirsty soil (\"petrichor\") serves primarily to", options: ["introduce a scientific curiosity that interrupts an otherwise poetic tone.", "trigger a sensory memory linking human renewal to Earth's own cycles.", "criticise urban living for masking natural fragrances.", "argue that rainfall is nature's most transformative phenomenon."], correctAnswer: "B", explanation: `The passage states petrichor "urges us to... remember our own capacity for renewal," directly linking the scent to human rejuvenation. Option A is incorrect as the tone remains lyrical. Option C is not asserted in the passage. Option D exaggerates rainfall's role among many other natural symbols used.` },
             { passageIndex: 0, type: 'Purpose/Inference', text: "In context, describing \"the humble moss that cushions a fallen log\" is intended to", options: ["illustrate resilience by showing life flourishing in overlooked spaces, modelling quiet perseverance.", "lament the decay that inevitably follows a tree's collapse.", "claim that low-light flora are evolutionarily superior to flowering plants.", "suggest that such minor organisms contribute little of substance to ecosystem health."], correctAnswer: "A", explanation: `The moss "teaches resilience by thriving in places others overlook," which directly mirrors the answer in option A. Option B introduces a sense of lament not present in the author's neutral tone. Options C and D make claims that are entirely absent from the passage.` },
-            // Questions for Passage 2
             { passageIndex: 1, type: 'Inference/Conclusion', text: "Which statement would the author most likely endorse?", options: ["Divestment is primarily a defensive tactic used when a company faces financial distress.", "Selling non-core assets can strengthen a firm's future by redirecting resources toward high-potential areas.", "Investors generally penalise companies that sell profitable units, interpreting the move as uncertainty.", "The main value of divestment lies in reducing headcount and operational complexity."], correctAnswer: "B", explanation: `The passage frames divestment as "pruning" and "concentrating sunlight on the branches most likely to bear fruit," which supports the idea of strengthening the future by redirecting resources. Option A is incorrect as the tone is forward-looking, not purely defensive. Option C conflicts with the text's claim that investors "frequently reward" decisive action. Option D is too narrow, ignoring the key theme of strategic reinvestment.` },
             { passageIndex: 1, type: 'Direct Retrieval/Inference', text: "Which of the following assertions is best supported by the passage?", options: ["Divestments inevitably lead to short-term valuation decline before any long-term benefits appear.", "First movers in divestment decisions often receive positive market reactions signalling strategic clarity.", "Legacy factories typically outperform newer digital platforms in return on capital employed.", "Talent retention is rarely affected by the sale of a business line if communication is swift."], correctAnswer: "B", explanation: `The text explicitly states that "The investor community frequently rewards the firm that moves first, interpreting action as proof of strategic clarity." Option A is contradicted by this. Option C makes a performance claim not supported by the text. Option D is incorrect as the passage warns a "rushed sale can trigger talent flight."` },
             { passageIndex: 1, type: 'Purpose/Inference', text: "The author describes \"legacy factories kept alive by sentimentality\" primarily to", options: ["criticise executives for disregarding employee nostalgia.", "illustrate how emotional attachment can obscure rational capital allocation.", "highlight the superior environmental footprint of older industrial plants.", "suggest that manufacturing assets are harder to sell than service units."], correctAnswer: "B", explanation: `The passage links "sentimentality" to assets that "consume invisible bandwidth," illustrating the concept of "intangible drag" where emotional bias clouds rational decision-making. Option A focuses on blame, whereas the author is illustrating a business principle. Options C and D introduce topics (environment, sale difficulty) not mentioned in the passage.` },
             { passageIndex: 1, type: 'Purpose/Inference', text: "In context, comparing successful divestments to \"well-edited manuscripts\" serves mainly to", options: ["emphasise that deletion, not addition, can clarify an organisation's strategic narrative.", "argue that corporate reports should adopt more literary language.", "indicate that most divestments are driven by external editors such as activist investors.", "imply that regulatory reviewers act as proof-readers in complex transactions."], correctAnswer: "A", explanation: `The metaphor is explained with the phrase "what is omitted sharpens what remains on the page," which directly supports the idea that removing assets (deletion) clarifies strategic focus. Option B is about writing style, not strategy. Options C and D introduce external parties (activist investors, regulators) not mentioned in the text.` },
-            // Questions for Passage 3
             { passageIndex: 2, type: 'Inference/Conclusion', text: "Which statement would the author most likely endorse?", options: ["Chinaware's relevance has faded in an era that prizes disposable tableware.", "Integrating modern technology can coexist with traditional porcelain craftsmanship.", "The primary appeal of chinaware lies in its monetary value to collectors.", "European mastery of porcelain eliminated any need for Chinese imports."], correctAnswer: "B", explanation: `The passage describes artisans who "slip smart sensors beneath the glaze," and concludes that "preserving tradition does not require halting innovation." This directly supports the coexistence of technology and tradition. Option A is contradicted by the author's argument for chinaware's sustainability. Option C ignores the cultural and historical value discussed. Option D is an overstatement, as the passage notes that the "mystique" of Chinese porcelain lingered.` },
             { passageIndex: 2, type: 'Direct Retrieval', text: "Which of the following assertions is best supported by the passage?", options: ["Properly vitrified porcelain withstands sudden temperature changes better than thick earthenware.", "Smart sensors compromise the aesthetic purity of fine chinaware.", "Early Chinese porcelain relied on industrial espionage from Europe.", "Disposable bamboo plates produce less total environmental impact than porcelain."], correctAnswer: "A", explanation: `The passage explicitly states that "properly vitrified porcelain resists thermal shock better than thick earthenware." Option B is an unsubstantiated opinion. Option C reverses the historical flow of information. Option D is contradicted by the author's argument that chinaware's longevity amortises its embodied energy over generations.` },
             { passageIndex: 2, type: 'Purpose/Inference', text: "The author describes \"whisper walls\" primarily to", options: ["criticise mass-produced ceramic plates for being too heavy.", "illustrate that delicacy can coexist with structural resilience in porcelain.", "highlight the danger of using chinaware for hot beverages.", "argue that collectors prioritise visual motifs over functional quality."], correctAnswer: "B", explanation: `The passage mentions thin "whisper walls" directly after discussing the molecular harmony that provides strength, and notes that "strength hides within that delicacy," highlighting the core paradox of being both delicate and durable. Options A and C are not mentioned. Option D misinterprets collector appreciation, which the passage implies includes its physical properties.` },
             { passageIndex: 2, type: 'Purpose/Inference', text: "In context, noting that Meissen's discovery \"fuelled industrial espionage\" serves mainly to", options: ["demonstrate that technological secrets in luxury goods often provoke fierce competition.", "suggest that European nations rejected Chinese artistic influence thereafter.", "imply that scientific breakthroughs rarely influence diplomatic relations.", "claim that brand reputation matters less than production volume in porcelain."], correctAnswer: "A", explanation: `The mention of "industrial espionage" following the discovery of the porcelain formula is a direct example of the fierce competition sparked by valuable technological secrets in the luxury goods market. Option B is incorrect, as Chinese influence remained. Option C is contradicted by the example itself. Option D introduces the concept of production volume, which is not discussed.` },
-            
-            // UPDATED Questions for Passage 4
             { passageIndex: 3, type: 'Inference/Conclusion', text: "Which statement best captures the narrator’s guiding philosophy in the aftermath of Daniel’s death?", options: ["To preserve love, one must faithfully replicate past routines without alteration or expansion.", "Grief can become generative when everyday actions braid memory with the narrator’s evolving identity.", "Emotional recovery depends chiefly on accepting the linear finality of time, not on symbolic rituals.", "Clinging to personal belongings is a sentimental obstacle that eventually hinders psychological growth."], correctAnswer: "B", explanation: "Her rituals (second cup, sowing seeds, winding the watch) deliberately transform grief into something creative and forward-moving—“presence can be poured even when a chair is empty.” A misreads nuance: she adapts routines (brighter paint, clearing weather) rather than freezing them in place." },
             { passageIndex: 3, type: 'Inference/Conclusion', text: "What does the narrator’s decision to apply a brighter paint to the porch rail most strongly imply?", options: ["She feels compelled to finish Daniel’s incomplete household repairs exactly as he intended.", "She is quietly signalling a shift toward optimism while still honouring shared projects.", "She wants to erase visual reminders of Daniel so the house reflects only her current mood.", "She regards aesthetic changes as trivial compared with intangible memories."], correctAnswer: "B", explanation: "The fresh colour arises after laughter and is called “a shade brighter… my weather is clearing,” signalling optimism while honouring a joint task. A is plausible (a repair Daniel began), but ignores the text’s emphasis on emotional renewal, not mere completion." },
             { passageIndex: 3, type: 'Purpose/Inference', text: "Within the narrative, the pocket-watch that “keeps perfect time” principally functions to", options: ["highlight a comforting sense of temporal continuity that defies the finality of loss.", "expose an ironic tension between mechanical precision and Daniel’s history of tardiness.", "demonstrate the market value of heirlooms that accrue sentimental worth over generations.", "advance the plot by revealing a hidden message inside the watch’s casing."], correctAnswer: "A", explanation: "The watch makes her feel “less like a widow… caretaker of an unbroken promise,” underscoring continuity beyond death. B references an affectionate irony the text hints at (“early to farewells”), but that is secondary; the dominant purpose is comfort, not comic contrast." },
             { passageIndex: 3, type: 'Purpose/Inference', text: "The metaphor comparing memory to “a migratory bird” is most effective because it", options: ["captures the involuntary rhythm with which recollection visits and departs, shaping the narrator’s emotional weather.", "argues that grief, like bird-watching, benefits from patient documentation and taxonomic study.", "warns that indulging in wistful memories too often can drive them away, much as sudden noises scatter birds.", "establishes an ecological motif that foreshadows the narrator’s future activism for wildlife preservation."], correctAnswer: "A", explanation: "The bird image stresses unpredictability—“some days it lands gently… on others it startles”—and how that ebb-and-flow dictates her mood. C seems intuitive (noise scatters birds) yet inserts a cautionary moral never expressed; the text welcomes, not fears, visitation." }
         ];
 
-        // --- State ---
         let currentQuestionIndex = 0;
         let userAnswers = new Array(questions.length).fill(null);
         let timerInterval;
-        let timeLeft = 9 * 60; // 9 minutes in seconds
+        let timeLeft = 9 * 60;
         let examStartTime;
         let examEndTime;
         let userName = '';
@@ -386,6 +386,7 @@
         let currentlyDisplayedPassageIndex = -1;
         let currentFontSize = 1.0;
 
+        // --- Elements & Functions (No change in logic) ---
         const appContainer = document.getElementById('app-container');
         const setupScreen = document.getElementById('setup-screen');
         const examScreen = document.getElementById('exam-screen');
@@ -429,384 +430,32 @@
         const timeAnalysisResultsEl = document.getElementById('time-analysis-results');
         const typeAnalysisResultsEl = document.getElementById('type-analysis-results');
 
-        // --- Functions (unchanged logic) ---
-
-        function startTimer() {
-            examStartTime = new Date();
-            clearInterval(timerInterval);
-            timerEl.textContent = formatTimeSeconds(timeLeft);
-            timerInterval = setInterval(() => {
-                timeLeft--;
-                timerEl.textContent = formatTimeSeconds(timeLeft);
-                if (timeLeft <= 0) { endExamAndShowResults(); }
-            }, 1000);
-        }
-
-        function stopTimer() {
-            clearInterval(timerInterval);
-            examEndTime = examEndTime || new Date();
-        }
-
-        function formatTimeSeconds(totalSeconds) {
-             if (totalSeconds < 0) totalSeconds = 0;
-             const minutes = Math.floor(totalSeconds / 60);
-             const seconds = totalSeconds % 60;
-             return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        }
-
-        function formatTimeMilliseconds(milliseconds) {
-            if (!milliseconds || milliseconds < 0) return "0s";
-            return `${(milliseconds / 1000).toFixed(1)}s`;
-        }
-
-        function formatTimeDifference(milliseconds) {
-            if (!milliseconds || milliseconds < 0) return "0 min 00 sec";
-            const totalSeconds = Math.round(milliseconds / 1000);
-            const minutes = Math.floor(totalSeconds / 60);
-            const seconds = totalSeconds % 60;
-            return `${minutes} min ${seconds < 10 ? '0' : ''}${seconds} sec`;
-        }
-
-        function recordTimeSpent(index) {
-            if (questionStartTime && index >= 0 && index < questions.length) {
-                questionTimes[index] = (questionTimes[index] || 0) + (Date.now() - questionStartTime);
-            }
-            questionStartTime = null;
-        }
-
-        function toggleFlag() {
-            if (isReviewingFromResults) return;
-            flaggedQuestions[currentQuestionIndex] = !flaggedQuestions[currentQuestionIndex];
-            updateFlagButtonAppearance();
-            updateNavigatorButtons();
-        }
-
-        function updateFlagButtonAppearance() {
-            const isFlagged = flaggedQuestions[currentQuestionIndex];
-            flagButton.textContent = isFlagged ? 'Unflag' : 'Flag for Review';
-            flagButton.classList.toggle('flagged', isFlagged);
-        }
-
-        function updateFontSize() {
-            resizableTextElements.forEach(el => {
-                el.querySelectorAll('#passage-text, #question-text, .option-label').forEach(child => {
-                     child.style.fontSize = `${currentFontSize}rem`;
-                });
-            });
-        }
-
-        function loadQuestion(index, reviewMode = false) {
-            if (index < 0 || index >= questions.length) return;
-            if (!isReviewingFromResults && !reviewMode) { recordTimeSpent(currentQuestionIndex); }
-
-            const question = questions[index];
-            const newPassageIndex = question.passageIndex;
-            if (newPassageIndex !== currentlyDisplayedPassageIndex || reviewMode) {
-                passageTextEl.innerHTML = passages[newPassageIndex].replace(/\n/g, '<br><br>');
-                passageNumberEl.textContent = newPassageIndex + 1;
-                currentlyDisplayedPassageIndex = newPassageIndex;
-                document.querySelector('.passage-column').scrollTop = 0;
-            }
-
-            currentQuestionIndex = index;
-            isReviewingFromResults = reviewMode;
-            questionNumberEl.textContent = index + 1;
-            questionNumberInfoEl.textContent = `${index + 1} of ${questions.length}`;
-            questionTextEl.textContent = question.text;
-            document.querySelector('.question-column').scrollTop = 0;
-
-            optionsContainer.innerHTML = '';
-            reviewExplanationContainer.innerHTML = '';
-            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
-            question.options.forEach((option, i) => {
-                const optionId = `q${index}_opt${i}`;
-                const label = document.createElement('label');
-                label.htmlFor = optionId;
-                label.className = 'option-label';
-                label.dataset.optionIndex = i;
-
-                const radio = document.createElement('input');
-                radio.type = 'radio';
-                radio.id = optionId;
-                radio.name = `question_${index}`;
-                radio.value = optionLetters[i];
-                radio.disabled = reviewMode;
-                label.style.cursor = reviewMode ? 'default' : 'pointer';
-
-                if (userAnswers[index] === optionLetters[i]) {
-                    radio.checked = true;
-                    label.classList.add('selected-answer');
-                }
-
-                if (reviewMode) {
-                    const isCorrectAnswer = question.correctAnswer === optionLetters[i];
-                    const isSelectedAnswer = userAnswers[index] === optionLetters[i];
-                    if (isCorrectAnswer) {
-                        label.classList.add('border-green-500', 'border-2', 'bg-green-50');
-                    } else if (isSelectedAnswer) {
-                        label.classList.add('border-red-500', 'border-2', 'bg-red-50');
-                    }
-                }
-
-                label.appendChild(radio);
-                label.appendChild(document.createTextNode(` ${optionLetters[i]}) ${option}`));
-
-                if (!reviewMode) {
-                    label.addEventListener('click', () => handleOptionSelect(index, i, optionLetters[i]));
-                    radio.addEventListener('change', () => handleOptionSelect(index, i, optionLetters[i]));
-                }
-                optionsContainer.appendChild(label);
-            });
-
-            if (reviewMode && question.explanation) {
-                const explanationDiv = document.createElement('div');
-                explanationDiv.className = 'explanation-box';
-                explanationDiv.innerHTML = `<strong class="font-semibold">Explanation:</strong><br>${question.explanation.replace(/\n/g, '<br>')}`;
-                reviewExplanationContainer.appendChild(explanationDiv);
-            }
-
-            prevButton.disabled = index === 0;
-            nextButton.textContent = (!reviewMode && index === questions.length - 1) ? 'Finish & Review' : 'Next (Alt+N) →';
-            if(reviewMode) nextButton.disabled = index === questions.length - 1;
-
-            updateFlagButtonAppearance();
-
-            backToResultsButton.classList.toggle('hidden', !reviewMode);
-            endExamButtonFooter.classList.toggle('hidden', reviewMode);
-            examTitleEl.textContent = reviewMode ? "Reviewing Question" : "Verbal Reasoning";
-            flagButton.disabled = reviewMode;
-
-            updateNavigatorHighlight();
-            updateFontSize();
-            if (!isReviewingFromResults) { questionStartTime = Date.now(); }
-        }
-
-        function handleOptionSelect(questionIndex, optionIndex, optionValue) {
-             if (questionIndex !== currentQuestionIndex || isReviewingFromResults) return;
-             userAnswers[questionIndex] = optionValue;
-             document.querySelectorAll(`#options-container .option-label`).forEach(lbl => lbl.classList.remove('selected-answer'));
-             const selectedLabel = document.querySelector(`#options-container label[for="q${questionIndex}_opt${optionIndex}"]`);
-             if (selectedLabel) {
-                 selectedLabel.classList.add('selected-answer');
-                 selectedLabel.querySelector('input[type="radio"]').checked = true;
-             }
-             updateNavigatorButtons();
-        }
-
-        function showNextQuestion() {
-            const reviewMode = isReviewingFromResults;
-            const nextIndex = currentQuestionIndex + 1;
-            if (nextIndex < questions.length) {
-                loadQuestion(nextIndex, reviewMode);
-            } else if (!reviewMode) {
-                recordTimeSpent(currentQuestionIndex);
-                stopTimer();
-                showReviewScreen();
-            }
-        }
-
-        function showPrevQuestion() {
-            if (currentQuestionIndex > 0) {
-                loadQuestion(currentQuestionIndex - 1, isReviewingFromResults);
-            }
-        }
-
-        function showScreen(screenToShow) {
-            [setupScreen, examScreen, reviewScreen, resultsScreen].forEach(screen => {
-                screen.classList.add('hidden');
-                screen.classList.remove('flex');
-            });
-            screenToShow.classList.remove('hidden');
-            if (screenToShow !== examScreen) appContainer.classList.remove('!border-none', '!shadow-none', '!m-0', '!rounded-none');
-            else appContainer.classList.add('!border-none', '!shadow-none', '!m-0', '!rounded-none');
-
-            if (screenToShow === setupScreen || screenToShow === resultsScreen) {
-                 screenToShow.classList.add('flex');
-            }
-        }
-
-        function showReviewScreen(filterFlagged = false) {
-            recordTimeSpent(currentQuestionIndex);
-            stopTimer();
-            showScreen(reviewScreen);
-            reviewScreen.classList.add('flex'); // Keep flex for review screen
-
-            reviewGrid.innerHTML = '';
-            questions.forEach((_, index) => {
-                if (filterFlagged && !flaggedQuestions[index]) return;
-                const button = document.createElement('button');
-                button.textContent = index + 1;
-                button.className = 'review-grid-button';
-                button.classList.toggle('review-grid-button-answered', userAnswers[index] !== null);
-                button.classList.toggle('review-grid-button-unanswered', userAnswers[index] === null);
-                if (flaggedQuestions[index]) button.classList.add('review-flagged');
-                button.onclick = () => {
-                    showScreen(examScreen);
-                    examScreen.classList.add('flex');
-                    loadQuestion(index);
-                    startTimer();
-                };
-                reviewGrid.appendChild(button);
-            });
-            filterFlaggedButton.textContent = filterFlagged ? 'Show All Questions' : 'Show Flagged Only';
-        }
-
-        function populateNavigator() {
-             navigatorGrid.innerHTML = '';
-             questions.forEach((_, index) => {
-                 const button = document.createElement('button');
-                 button.textContent = index + 1;
-                 button.className = 'py-2 px-1 border border-gray-300 rounded-md text-center transition duration-150 ease-in-out text-sm hover:bg-gray-100';
-                 button.dataset.questionIndex = index;
-                 if (userAnswers[index]) button.classList.add('nav-answered');
-                 if (index === currentQuestionIndex) button.classList.add('nav-current');
-                 if (flaggedQuestions[index]) button.classList.add('nav-flagged');
-                 button.onclick = () => {
-                     navigatorModal.classList.remove('flex');
-                     loadQuestion(parseInt(button.dataset.questionIndex, 10), isReviewingFromResults);
-                     if (!isReviewingFromResults) questionStartTime = Date.now();
-                 };
-                 navigatorGrid.appendChild(button);
-             });
-        }
-
-        function updateNavigatorButtons() {
-             navigatorGrid.querySelectorAll('button').forEach(button => {
-                 const index = parseInt(button.dataset.questionIndex, 10);
-                 button.classList.toggle('nav-answered', !!userAnswers[index]);
-                 button.classList.toggle('nav-current', index === currentQuestionIndex);
-                 button.classList.toggle('nav-flagged', flaggedQuestions[index]);
-             });
-        }
-
-        function updateNavigatorHighlight() {
-            navigatorGrid.querySelectorAll('button').forEach(button => {
-                button.classList.toggle('nav-current', parseInt(button.dataset.questionIndex, 10) === currentQuestionIndex);
-            });
-        }
-
-        function analyzeAndDisplayPerformance() {
-            let correctTimeTotal = 0, correctCount = 0, incorrectTimeTotal = 0, incorrectCount = 0;
-            const typeStats = {};
-
-            questions.forEach((q, i) => {
-                const isCorrect = userAnswers[i] === q.correctAnswer;
-                if (userAnswers[i] !== null) {
-                    (isCorrect ? (correctTimeTotal += questionTimes[i], correctCount++) : (incorrectTimeTotal += questionTimes[i], incorrectCount++));
-                }
-                const qType = q.type || 'Uncategorized';
-                if (!typeStats[qType]) typeStats[qType] = { correct: 0, total: 0 };
-                typeStats[qType].total++;
-                if(isCorrect) typeStats[qType].correct++;
-            });
-
-            timeAnalysisResultsEl.innerHTML = `
-                <p class="flex justify-between"><span>Avg. time (Correct):</span> <span class="font-bold text-green-600">${correctCount > 0 ? formatTimeMilliseconds(correctTimeTotal / correctCount) : 'N/A'}</span></p>
-                <p class="flex justify-between"><span>Avg. time (Incorrect):</span> <span class="font-bold text-red-600">${incorrectCount > 0 ? formatTimeMilliseconds(incorrectTimeTotal / incorrectCount) : 'N/A'}</span></p>`;
-
-            typeAnalysisResultsEl.innerHTML = '';
-            Object.keys(typeStats).sort().forEach(type => {
-                const stats = typeStats[type];
-                const percentage = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
-                typeAnalysisResultsEl.innerHTML += `<p class="flex justify-between"><span>${type}:</span> <span class="font-bold">${stats.correct}/${stats.total} (${percentage}%)</span></p>`;
-            });
-        }
-
-        function showResultsScreen() {
-            examEndTime = examEndTime || new Date();
-            recordTimeSpent(currentQuestionIndex);
-            stopTimer();
-            showScreen(resultsScreen);
-
-            let score = 0;
-            resultsGridContainer.innerHTML = '';
-            questions.forEach((qData, index) => {
-                const isCorrect = userAnswers[index] === qData.correctAnswer;
-                if (isCorrect) score++;
-
-                const container = document.createElement('div');
-                const resultBox = document.createElement('div');
-                resultBox.className = 'result-box';
-                resultBox.classList.add(isCorrect ? 'result-box-correct' : 'result-box-incorrect');
-                if (flaggedQuestions[index]) resultBox.classList.add('result-box-flagged');
-                resultBox.title = `Click to review Question ${index + 1}`;
-
-                const timeDiv = document.createElement('div');
-                timeDiv.className = 'time-spent';
-                timeDiv.textContent = `${Math.round((questionTimes[index] || 0) / 1000)}s`;
-                resultBox.appendChild(timeDiv);
-                container.appendChild(resultBox);
-
-                const qNumDiv = document.createElement('div');
-                qNumDiv.className = 'question-num-label';
-                qNumDiv.textContent = `Q${index + 1}`;
-                container.appendChild(qNumDiv);
-
-                container.addEventListener('click', () => revisitQuestionFromResults(index));
-                resultsGridContainer.appendChild(container);
-            });
-
-            scoreEl.textContent = score;
-            totalQuestionsResultsEl.textContent = questions.length;
-            timeTakenEl.textContent = formatTimeDifference(examEndTime - examStartTime);
-            analyzeAndDisplayPerformance();
-        }
-
-        function revisitQuestionFromResults(index) {
-            showScreen(examScreen);
-            examScreen.classList.add('flex');
-            loadQuestion(index, true);
-        }
-
-        function endExamAndShowResults() {
-            stopTimer();
-            showResultsScreen();
-        }
-
-        function generatePDF() {
-             const { jsPDF } = window.jspdf;
-             const doc = new jsPDF();
-             let y = 15;
-             const lineHeight = 7;
-             const margin = 15;
-             const pageWidth = doc.internal.pageSize.width;
-
-             doc.setFontSize(18);
-             doc.text("UCAT Verbal Reasoning Results", pageWidth / 2, y, { align: 'center' });
-             y += lineHeight * 2;
-
-             doc.setFontSize(12);
-             const summaryData = [
-                 ["Name:", userName || 'N/A'],
-                 ["Goal:", `${userGoal || 'N/A'} / ${questions.length}`],
-                 ["Focus Area:", userFocusArea || 'N/A'],
-                 ["Final Score:", `${scoreEl.textContent} / ${questions.length}`],
-                 ["Time Taken:", timeTakenEl.textContent]
-             ];
-             summaryData.forEach(row => {
-                 doc.setFont(undefined, 'bold');
-                 doc.text(row[0], margin, y);
-                 doc.setFont(undefined, 'normal');
-                 doc.text(row[1], margin + 40, y);
-                 y += lineHeight;
-             });
-             y += lineHeight;
-
-            doc.save(`ucat_vr_results_${userName.replace(/\s+/g, '_') || 'user'}.pdf`);
-        }
-
+        function startTimer() { examStartTime = new Date(); clearInterval(timerInterval); timerEl.textContent = formatTimeSeconds(timeLeft); timerInterval = setInterval(() => { timeLeft--; timerEl.textContent = formatTimeSeconds(timeLeft); if (timeLeft <= 0) { endExamAndShowResults(); } }, 1000); }
+        function stopTimer() { clearInterval(timerInterval); examEndTime = examEndTime || new Date(); }
+        function formatTimeSeconds(totalSeconds) { if (totalSeconds < 0) totalSeconds = 0; const minutes = Math.floor(totalSeconds / 60); const seconds = totalSeconds % 60; return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`; }
+        function formatTimeMilliseconds(milliseconds) { if (!milliseconds || milliseconds < 0) return "0s"; return `${(milliseconds / 1000).toFixed(1)}s`; }
+        function formatTimeDifference(milliseconds) { if (!milliseconds || milliseconds < 0) return "0 min 00 sec"; const totalSeconds = Math.round(milliseconds / 1000); const minutes = Math.floor(totalSeconds / 60); const seconds = totalSeconds % 60; return `${minutes} min ${seconds < 10 ? '0' : ''}${seconds} sec`; }
+        function recordTimeSpent(index) { if (questionStartTime && index >= 0 && index < questions.length) { questionTimes[index] = (questionTimes[index] || 0) + (Date.now() - questionStartTime); } questionStartTime = null; }
+        function toggleFlag() { if (isReviewingFromResults) return; flaggedQuestions[currentQuestionIndex] = !flaggedQuestions[currentQuestionIndex]; updateFlagButtonAppearance(); updateNavigatorButtons(); }
+        function updateFlagButtonAppearance() { const isFlagged = flaggedQuestions[currentQuestionIndex]; flagButton.textContent = isFlagged ? 'Unflag' : 'Flag for Review'; flagButton.classList.toggle('flagged', isFlagged); }
+        function updateFontSize() { resizableTextElements.forEach(el => { el.querySelectorAll('#passage-text, #question-text, .option-label').forEach(child => { child.style.fontSize = `${currentFontSize}rem`; }); }); }
+        function loadQuestion(index, reviewMode = false) { if (index < 0 || index >= questions.length) return; if (!isReviewingFromResults && !reviewMode) { recordTimeSpent(currentQuestionIndex); } const question = questions[index]; const newPassageIndex = question.passageIndex; if (newPassageIndex !== currentlyDisplayedPassageIndex || reviewMode) { passageTextEl.innerHTML = passages[newPassageIndex].replace(/\n/g, '<br><br>'); passageNumberEl.textContent = newPassageIndex + 1; currentlyDisplayedPassageIndex = newPassageIndex; document.querySelector('.passage-column').scrollTop = 0; } currentQuestionIndex = index; isReviewingFromResults = reviewMode; questionNumberEl.textContent = index + 1; questionNumberInfoEl.textContent = `${index + 1} of ${questions.length}`; questionTextEl.textContent = question.text; document.querySelector('.question-column').scrollTop = 0; optionsContainer.innerHTML = ''; reviewExplanationContainer.innerHTML = ''; const optionLetters = ['A', 'B', 'C', 'D', 'E']; question.options.forEach((option, i) => { const optionId = `q${index}_opt${i}`; const label = document.createElement('label'); label.htmlFor = optionId; label.className = 'option-label'; label.dataset.optionIndex = i; const radio = document.createElement('input'); radio.type = 'radio'; radio.id = optionId; radio.name = `question_${index}`; radio.value = optionLetters[i]; radio.disabled = reviewMode; label.style.cursor = reviewMode ? 'default' : 'pointer'; if (userAnswers[index] === optionLetters[i]) { radio.checked = true; label.classList.add('selected-answer'); } if (reviewMode) { const isCorrectAnswer = question.correctAnswer === optionLetters[i]; const isSelectedAnswer = userAnswers[index] === optionLetters[i]; if (isCorrectAnswer) { label.classList.add('border-green-500', 'border-2', 'bg-green-50'); } else if (isSelectedAnswer) { label.classList.add('border-red-500', 'border-2', 'bg-red-50'); } } label.appendChild(radio); label.appendChild(document.createTextNode(` ${optionLetters[i]}) ${option}`)); if (!reviewMode) { label.addEventListener('click', () => handleOptionSelect(index, i, optionLetters[i])); radio.addEventListener('change', () => handleOptionSelect(index, i, optionLetters[i])); } optionsContainer.appendChild(label); }); if (reviewMode && question.explanation) { const explanationDiv = document.createElement('div'); explanationDiv.className = 'explanation-box'; explanationDiv.innerHTML = `<strong class="font-semibold">Explanation:</strong><br>${question.explanation.replace(/\n/g, '<br>')}`; reviewExplanationContainer.appendChild(explanationDiv); } prevButton.disabled = index === 0; nextButton.textContent = (!reviewMode && index === questions.length - 1) ? 'Finish & Review' : 'Next (Alt+N) →'; if(reviewMode) nextButton.disabled = index === questions.length - 1; updateFlagButtonAppearance(); backToResultsButton.classList.toggle('hidden', !reviewMode); endExamButtonFooter.classList.toggle('hidden', reviewMode); examTitleEl.textContent = reviewMode ? "Reviewing Question" : "Verbal Reasoning"; flagButton.disabled = reviewMode; updateNavigatorHighlight(); updateFontSize(); if (!isReviewingFromResults) { questionStartTime = Date.now(); } }
+        function handleOptionSelect(questionIndex, optionIndex, optionValue) { if (questionIndex !== currentQuestionIndex || isReviewingFromResults) return; userAnswers[questionIndex] = optionValue; document.querySelectorAll(`#options-container .option-label`).forEach(lbl => lbl.classList.remove('selected-answer')); const selectedLabel = document.querySelector(`#options-container label[for="q${questionIndex}_opt${optionIndex}"]`); if (selectedLabel) { selectedLabel.classList.add('selected-answer'); selectedLabel.querySelector('input[type="radio"]').checked = true; } updateNavigatorButtons(); }
+        function showNextQuestion() { const reviewMode = isReviewingFromResults; const nextIndex = currentQuestionIndex + 1; if (nextIndex < questions.length) { loadQuestion(nextIndex, reviewMode); } else if (!reviewMode) { recordTimeSpent(currentQuestionIndex); stopTimer(); showReviewScreen(); } }
+        function showPrevQuestion() { if (currentQuestionIndex > 0) { loadQuestion(currentQuestionIndex - 1, isReviewingFromResults); } }
+        function showScreen(screenToShow) { [setupScreen, examScreen, reviewScreen, resultsScreen].forEach(screen => { screen.classList.add('hidden'); screen.classList.remove('flex'); }); screenToShow.classList.remove('hidden'); if (screenToShow !== examScreen) appContainer.classList.remove('!border-none', '!shadow-none', '!m-0', '!rounded-none'); else appContainer.classList.add('!border-none', '!shadow-none', '!m-0', '!rounded-none'); if (screenToShow === setupScreen || screenToShow === resultsScreen) { screenToShow.classList.add('flex'); } }
+        function showReviewScreen(filterFlagged = false) { recordTimeSpent(currentQuestionIndex); stopTimer(); showScreen(reviewScreen); reviewScreen.classList.add('flex'); reviewGrid.innerHTML = ''; questions.forEach((_, index) => { if (filterFlagged && !flaggedQuestions[index]) return; const button = document.createElement('button'); button.textContent = index + 1; button.className = 'review-grid-button'; button.classList.toggle('review-grid-button-answered', userAnswers[index] !== null); button.classList.toggle('review-grid-button-unanswered', userAnswers[index] === null); if (flaggedQuestions[index]) button.classList.add('review-flagged'); button.onclick = () => { showScreen(examScreen); examScreen.classList.add('flex'); loadQuestion(index); startTimer(); }; reviewGrid.appendChild(button); }); filterFlaggedButton.textContent = filterFlagged ? 'Show All Questions' : 'Show Flagged Only'; }
+        function populateNavigator() { navigatorGrid.innerHTML = ''; questions.forEach((_, index) => { const button = document.createElement('button'); button.textContent = index + 1; button.className = 'py-2 px-1 border border-gray-300 rounded-md text-center transition duration-150 ease-in-out text-sm hover:bg-gray-100'; button.dataset.questionIndex = index; if (userAnswers[index]) button.classList.add('nav-answered'); if (index === currentQuestionIndex) button.classList.add('nav-current'); if (flaggedQuestions[index]) button.classList.add('nav-flagged'); button.onclick = () => { navigatorModal.classList.remove('flex'); loadQuestion(parseInt(button.dataset.questionIndex, 10), isReviewingFromResults); if (!isReviewingFromResults) questionStartTime = Date.now(); }; navigatorGrid.appendChild(button); }); }
+        function updateNavigatorButtons() { navigatorGrid.querySelectorAll('button').forEach(button => { const index = parseInt(button.dataset.questionIndex, 10); button.classList.toggle('nav-answered', !!userAnswers[index]); button.classList.toggle('nav-current', index === currentQuestionIndex); button.classList.toggle('nav-flagged', flaggedQuestions[index]); }); }
+        function updateNavigatorHighlight() { navigatorGrid.querySelectorAll('button').forEach(button => { button.classList.toggle('nav-current', parseInt(button.dataset.questionIndex, 10) === currentQuestionIndex); }); }
+        function analyzeAndDisplayPerformance() { let correctTimeTotal = 0, correctCount = 0, incorrectTimeTotal = 0, incorrectCount = 0; const typeStats = {}; questions.forEach((q, i) => { const isCorrect = userAnswers[i] === q.correctAnswer; if (userAnswers[i] !== null) { (isCorrect ? (correctTimeTotal += questionTimes[i], correctCount++) : (incorrectTimeTotal += questionTimes[i], incorrectCount++)); } const qType = q.type || 'Uncategorized'; if (!typeStats[qType]) typeStats[qType] = { correct: 0, total: 0 }; typeStats[qType].total++; if(isCorrect) typeStats[qType].correct++; }); timeAnalysisResultsEl.innerHTML = `<p class="flex justify-between"><span>Avg. time (Correct):</span> <span class="font-bold text-green-600">${correctCount > 0 ? formatTimeMilliseconds(correctTimeTotal / correctCount) : 'N/A'}</span></p><p class="flex justify-between"><span>Avg. time (Incorrect):</span> <span class="font-bold text-red-600">${incorrectCount > 0 ? formatTimeMilliseconds(incorrectTimeTotal / incorrectCount) : 'N/A'}</span></p>`; typeAnalysisResultsEl.innerHTML = ''; Object.keys(typeStats).sort().forEach(type => { const stats = typeStats[type]; const percentage = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0; typeAnalysisResultsEl.innerHTML += `<p class="flex justify-between"><span>${type}:</span> <span class="font-bold">${stats.correct}/${stats.total} (${percentage}%)</span></p>`; }); }
+        function showResultsScreen() { examEndTime = examEndTime || new Date(); recordTimeSpent(currentQuestionIndex); stopTimer(); showScreen(resultsScreen); let score = 0; resultsGridContainer.innerHTML = ''; questions.forEach((qData, index) => { const isCorrect = userAnswers[index] === qData.correctAnswer; if (isCorrect) score++; const container = document.createElement('div'); const resultBox = document.createElement('div'); resultBox.className = 'result-box'; resultBox.classList.add(isCorrect ? 'result-box-correct' : 'result-box-incorrect'); if (flaggedQuestions[index]) resultBox.classList.add('result-box-flagged'); resultBox.title = `Click to review Question ${index + 1}`; const timeDiv = document.createElement('div'); timeDiv.className = 'time-spent'; timeDiv.textContent = `${Math.round((questionTimes[index] || 0) / 1000)}s`; resultBox.appendChild(timeDiv); container.appendChild(resultBox); const qNumDiv = document.createElement('div'); qNumDiv.className = 'question-num-label'; qNumDiv.textContent = `Q${index + 1}`; container.appendChild(qNumDiv); container.addEventListener('click', () => revisitQuestionFromResults(index)); resultsGridContainer.appendChild(container); }); scoreEl.textContent = score; totalQuestionsResultsEl.textContent = questions.length; timeTakenEl.textContent = formatTimeDifference(examEndTime - examStartTime); analyzeAndDisplayPerformance(); }
+        function revisitQuestionFromResults(index) { showScreen(examScreen); examScreen.classList.add('flex'); loadQuestion(index, true); }
+        function endExamAndShowResults() { stopTimer(); showResultsScreen(); }
+        function generatePDF() { const { jsPDF } = window.jspdf; const doc = new jsPDF(); let y = 15; const lineHeight = 7; const margin = 15; const pageWidth = doc.internal.pageSize.width; doc.setFontSize(18); doc.text("UCAT Verbal Reasoning Results", pageWidth / 2, y, { align: 'center' }); y += lineHeight * 2; doc.setFontSize(12); const summaryData = [ ["Name:", userName || 'N/A'], ["Goal:", `${userGoal || 'N/A'} / ${questions.length}`], ["Focus Area:", userFocusArea || 'N/A'], ["Final Score:", `${scoreEl.textContent} / ${questions.length}`], ["Time Taken:", timeTakenEl.textContent] ]; summaryData.forEach(row => { doc.setFont(undefined, 'bold'); doc.text(row[0], margin, y); doc.setFont(undefined, 'normal'); doc.text(row[1], margin + 40, y); y += lineHeight; }); y += lineHeight; doc.save(`ucat_vr_results_${userName.replace(/\s+/g, '_') || 'user'}.pdf`); }
+        
         // --- Event Listeners ---
-        startButton.addEventListener('click', () => {
-            userName = nameInput.value.trim();
-            userGoal = goalInput.value.trim();
-            userFocusArea = focusAreaInput.value.trim();
-            showScreen(examScreen);
-            examScreen.classList.add('flex');
-            startTimer();
-            loadQuestion(0);
-            populateNavigator();
-        });
-
+        startButton.addEventListener('click', () => { userName = nameInput.value.trim(); userGoal = goalInput.value.trim(); userFocusArea = focusAreaInput.value.trim(); timeLeft = 9 * 60; showScreen(examScreen); examScreen.classList.add('flex'); startTimer(); loadQuestion(0); populateNavigator(); });
         nextButton.addEventListener('click', showNextQuestion);
         prevButton.addEventListener('click', showPrevQuestion);
         endExamButton.addEventListener('click', endExamAndShowResults);
