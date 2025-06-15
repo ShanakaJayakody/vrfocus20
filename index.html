@@ -33,20 +33,21 @@
             border-radius: 1rem;
         }
 
+        /* UPDATED: Gradient for primary buttons */
         .primary-button-new {
-            background-color: #4353ff;
+            background-image: linear-gradient(135deg, #4f46e5, #6366f1);
             color: white;
-            border: 1px solid transparent;
+            border: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(67, 83, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
             font-weight: 600;
             padding: 0.75rem 2rem;
             border-radius: 0.5rem;
         }
         .primary-button-new:hover {
-            background-color: #3a47d9;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(67, 83, 255, 0.4);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+            background-image: linear-gradient(135deg, #4338ca, #4f46e5);
         }
 
         .secondary-button-new {
@@ -138,7 +139,6 @@
         .result-box { display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1 / 1; padding: 0.25rem; border-radius: 0.5rem; color: white; text-align: center; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); width: 100%; height: auto; border: none; }
         .result-box:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
         
-        /* UPDATED: Gradient colors for result boxes */
         .result-box-correct {
             background: linear-gradient(145deg, #22c55e, #15803d);
         }
@@ -368,11 +368,10 @@
             { passageIndex: 3, type: 'Purpose/Inference', text: "In context, likening memory to \"a migratory bird\" chiefly", options: ["conveys its unpredictable arrival and departure, shaping the narrator's emotions.", "suggests memories should be caged and controlled.", "criticises bird imagery as clichéd in grieving narratives.", "indicates the narrator's newfound interest in ornithology."], correctAnswer: "A", explanation: `The metaphor describes memory landing "gently" some days while on others it "startles... and leaves." This directly conveys the unpredictable nature of memory and its emotional impact, which aligns perfectly with option A. Option B (caging) is the opposite of her "open windows" approach. Options C and D introduce ideas not mentioned in the passage.` }
         ];
 
-        // --- State ---
+        // --- State & Elements (unchanged) ---
         let currentQuestionIndex = 0;
         let userAnswers = new Array(questions.length).fill(null);
         let timerInterval;
-        let timeLeft = 9 * 60; // UPDATED: 9 minutes in seconds
         let examStartTime;
         let examEndTime;
         let userName = '';
