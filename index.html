@@ -13,412 +13,193 @@
             margin: 0;
             padding: 0;
             overflow: hidden; /* Prevent scrolling on body */
-        }
-        body {
             font-family: 'Inter', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #ffffff;
         }
+
+        /* --- REDESIGNED THEMES --- */
+        .theme-background {
+            background-color: #f0f2f5;
+        }
+
+        #setup-screen, #results-screen {
+            background: linear-gradient(170deg, #E0E7FF 0%, #f0f2f5 30%, #f0f2f5 70%, #CFD8DC 100%);
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            border-radius: 1rem;
+        }
+
+        .primary-button-new {
+            background-color: #4353ff;
+            color: white;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(67, 83, 255, 0.3);
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+        }
+        .primary-button-new:hover {
+            background-color: #3a47d9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 83, 255, 0.4);
+        }
+
+        .secondary-button-new {
+            background-color: transparent;
+            color: #4353ff;
+            border: 1px solid #4353ff;
+            transition: all 0.3s ease;
+             font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+        }
+        .secondary-button-new:hover {
+            background-color: rgba(67, 83, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        input.themed-input {
+            background-color: #f0f2f5;
+            border: 1px solid #d1d5db;
+            color: #1f2937;
+        }
+        input.themed-input:focus {
+            border-color: #4353ff;
+            box-shadow: 0 0 0 2px rgba(67, 83, 255, 0.2);
+            outline: none;
+        }
+
+        /* --- Original Test Environment Styles (Untouched) --- */
         #app-container {
             display: flex;
             flex-direction: column;
-            height: calc(100vh - 2rem); 
+            height: calc(100vh - 2rem);
             width: 100%;
-            background-color: #ffffff; 
-            border: 1px solid #d1d5db; 
+            background-color: #ffffff;
+            border: 1px solid #d1d5db;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border-radius: 0.375rem; 
-            margin: 1rem; 
-            overflow: hidden; 
+            border-radius: 0.375rem;
+            margin: 1rem;
+            overflow: hidden;
         }
-        /* Header and Footer */
         .header-bar, .footer-bar {
-            flex-shrink: 0; 
-            background-color: #006DAA; 
-            color: white; 
-            padding: 0.75rem 1.5rem; 
+            flex-shrink: 0;
+            background-color: #006DAA;
+            color: white;
+            padding: 0.75rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .header-bar span, .header-bar div {
-             color: white;
-        }
-        #timer {
-             background-color: rgba(255, 255, 255, 0.2); 
-             color: white;
-             font-weight: bold;
-             padding: 0.25rem 0.75rem; 
-             border-radius: 0.25rem; 
-        }
-        .footer-bar button, .font-size-button {
-            background-color: transparent;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.5); 
-            padding: 0.4rem 0.8rem; 
-            font-size: 0.8rem; 
-            border-radius: 0.375rem;
-             transition: background-color 0.2s ease, border-color 0.2s ease;
-        }
-        .font-size-button {
-            padding: 0.2rem 0.6rem;
-            font-weight: bold;
-            line-height: 1.25;
-        }
-        .footer-bar button:hover:not(:disabled), .font-size-button:hover:not(:disabled) {
-            background-color: rgba(255, 255, 255, 0.15); 
-            border-color: white;
-        }
-         .footer-bar button:disabled {
-             opacity: 0.5;
-             cursor: not-allowed;
-             border-color: rgba(255, 255, 255, 0.3);
-         }
-         .footer-bar button#next-button {
-             background-color: #ffffff; 
-             color: #006DAA; 
-             border: 1px solid white;
-             font-weight: 500;
-         }
-         .footer-bar button#next-button:hover:not(:disabled) {
-             background-color: #f0f0f0; 
-         }
-         #flag-button {
-             background-color: transparent;
-             border: 1px solid white;
-             color: white;
-             transition: background-color 0.2s ease, color 0.2s ease; 
-         }
-         #flag-button:hover {
-             background-color: white;
-             color: #006DAA;
-         }
-          #flag-button.flagged {
-             background-color: #facc15; 
-             border-color: #facc15;
-             color: #422006; 
-          }
-          #flag-button.flagged:hover {
-             background-color: #f59e0b; 
-             border-color: #f59e0b;
-          }
+        .header-bar span, .header-bar div { color: white; }
+        #timer { background-color: rgba(255, 255, 255, 0.2); color: white; font-weight: bold; padding: 0.25rem 0.75rem; border-radius: 0.25rem; }
+        .footer-bar button, .font-size-button { background-color: transparent; color: white; border: 1px solid rgba(255, 255, 255, 0.5); padding: 0.4rem 0.8rem; font-size: 0.8rem; border-radius: 0.375rem; transition: background-color 0.2s ease, border-color 0.2s ease; }
+        .font-size-button { padding: 0.2rem 0.6rem; font-weight: bold; line-height: 1.25; }
+        .footer-bar button:hover:not(:disabled), .font-size-button:hover:not(:disabled) { background-color: rgba(255, 255, 255, 0.15); border-color: white; }
+        .footer-bar button:disabled { opacity: 0.5; cursor: not-allowed; border-color: rgba(255, 255, 255, 0.3); }
+        .footer-bar button#next-button { background-color: #ffffff; color: #006DAA; border: 1px solid white; font-weight: 500; }
+        .footer-bar button#next-button:hover:not(:disabled) { background-color: #f0f0f0; }
+        #flag-button { background-color: transparent; border: 1px solid white; color: white; transition: background-color 0.2s ease, color 0.2s ease; }
+        #flag-button:hover { background-color: white; color: #006DAA; }
+        #flag-button.flagged { background-color: #facc15; border-color: #facc15; color: #422006; }
+        #flag-button.flagged:hover { background-color: #f59e0b; border-color: #f59e0b; }
 
-        .main-content-area {
-            flex-grow: 1; 
-            display: flex;
-            overflow: hidden; 
-            padding: 1rem; 
-            gap: 1rem; 
-        }
-        .passage-column, .question-column {
-            flex: 0 0 50%;
-            overflow-y: auto; 
-            padding: 1rem;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.375rem;
-            background-color: #ffffff; 
-            height: 100%; 
-            transition: font-size 0.2s ease;
-        }
-        .question-column {
-             flex: 0 0 50%; 
-             position: relative; 
-        }
-
-        .selected-answer {
-            background-color: #bfdbfe !important; 
-            border-color: #3b82f6 !important; 
-        }
-        .nav-answered {
-            background-color: #a7f3d0; 
-        }
-        .nav-current {
-            border: 2px solid #3b82f6 !important; 
-            font-weight: bold;
-        }
-        .nav-flagged, .review-flagged {
-            border: 2px solid #f59e0b !important; 
-            position: relative; 
-        }
+        .main-content-area { flex-grow: 1; display: flex; overflow: hidden; padding: 1rem; gap: 1rem; }
+        .passage-column, .question-column { flex: 0 0 50%; overflow-y: auto; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 0.375rem; background-color: #ffffff; height: 100%; transition: font-size 0.2s ease; }
+        .question-column { flex: 0 0 50%; position: relative; }
+        .selected-answer { background-color: #bfdbfe !important; border-color: #3b82f6 !important; }
+        .nav-answered { background-color: #a7f3d0; }
+        .nav-current { border: 2px solid #3b82f6 !important; font-weight: bold; }
+        .nav-flagged, .review-flagged { border: 2px solid #f59e0b !important; position: relative; }
         .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
         .modal-content { background-color: #fefefe; margin: auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 600px; border-radius: 0.5rem; }
         .modal.flex { display: flex; }
 
-        button, .button {
-            transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-            border-radius: 0.375rem;
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            cursor: pointer;
-        }
-        button:active, .button:active { transform: scale(0.98); }
-        button:disabled { opacity: 0.6; cursor: not-allowed; }
-
-        .primary-button { background-color: #3b82f6; color: white; border: 1px solid transparent; }
-        .primary-button:hover:not(:disabled) { background-color: #2563eb; }
-        .secondary-button { background-color: white; color: #374151; border: 1px solid #d1d5db; }
-        .secondary-button:hover:not(:disabled) { background-color: #f9fafb; }
-        .danger-button { background-color: #ef4444; color: white; border: 1px solid transparent; }
-        .danger-button:hover:not(:disabled) { background-color: #dc2626; }
-        .subtle-button { background-color: #f3f4f6; color: #374151; border: 1px solid transparent; }
-        .subtle-button:hover:not(:disabled) { background-color: #e5e7eb; }
-
-        .option-label {
-            display: block;
-            padding: 0.75rem 1rem;
-            border: 1px solid #d1d5db; 
-            border-radius: 0.375rem;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-            transition: background-color 0.2s ease, border-color 0.2s ease;
-            background-color: #ffffff; 
-            color: #111827; 
-        }
-        .option-label:hover:not(.selected-answer) { 
-            background-color: #f3f4f6; 
-            border-color: #a5b4fc; 
-        }
+        .option-label { display: block; padding: 0.75rem 1rem; border: 1px solid #d1d5db; border-radius: 0.375rem; margin-bottom: 0.5rem; cursor: pointer; transition: background-color 0.2s ease, border-color 0.2s ease; background-color: #ffffff; color: #111827; }
+        .option-label:hover:not(.selected-answer) { background-color: #f3f4f6; border-color: #a5b4fc; }
         input[type="radio"] { display: none; }
         .resizable-text { font-size: 1rem; }
 
+        .explanation-box { background-color: #f3f4f6; border: 1px solid #d1d5db; padding: 0.5rem 0.75rem; margin-top: 0.75rem; border-radius: 0.375rem; color: #111827; }
 
-       .correct-answer-li { background-color: #dcfce7; border-left: 4px solid #22c55e; }
-       .incorrect-answer-li { background-color: #fee2e2; border-left: 4px solid #ef4444; }
-       .result-item-clickable-li { 
-           cursor: pointer;
-           transition: background-color 0.2s ease-in-out;
-           border: 1px solid #e5e7eb;
-           border-radius: 0.5rem;
-           margin-bottom: 0.5rem;
-           padding: 0.75rem;
-       }
-       .result-item-clickable-li:hover {
-           background-color: #f0f0f0;
-       }
-       .correct-indicator-text { color: #16a34a; font-weight: 600;}
-       .incorrect-indicator-text { color: #dc2626; font-weight: 600;}
+        .review-grid-button { padding: 0.5rem 0.25rem; border: 1px solid #d1d5db; border-radius: 0.375rem; text-align: center; transition: background-color 0.2s ease, border-color 0.2s ease; font-size: 0.875rem; line-height: 1.25rem; cursor: pointer; }
+        .review-grid-button-answered { background-color: #dcfce7; border-color: #86efac; color: #15803d; }
+        .review-grid-button-unanswered { background-color: #f3f4f6; border-color: #d1d5db; color: #4b5563; }
+        .review-grid-button:hover { filter: brightness(95%); }
 
-        #results-grid-container { 
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            gap: 0.5rem; /* MODIFIED: Reduced gap */
-            padding: 1rem 0; 
-            overflow-y: auto; 
-            max-width: 80%; /* MODIFIED: Made container narrower */
-            width: 100%;
-            margin: 0 auto;
-        }
-        .result-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            aspect-ratio: 1 / 1;
-            padding: 0.25rem; /* MODIFIED: Reduced padding */
-            border-radius: 0.375rem;
-            color: white; 
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 0.25rem;
-            width: 100%;
-            height: auto;
-            min-width: 2.5rem; /* MODIFIED: Reduced min-width */
-        }
-        .result-box:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        .result-box-correct {
-            background-color: #22c55e; 
-            border: 1px solid #16a34a; 
-        }
-        .result-box-incorrect {
-            background-color: #ef4444; 
-            border: 1px solid #dc2626; 
-        }
-        .result-box-flagged { 
-            outline: 2px solid #f59e0b; 
-            outline-offset: 2px;
-        }
-        .result-box .time-spent {
-            font-size: 0.875rem; /* MODIFIED: Reduced font size */
-            font-weight: 600; 
-            line-height: 1.1;
-        }
-        .question-num-label {
-            font-size: 0.75rem;
-            color: #374151;
-            text-align: center;
-            width: 100%;
-        }
-        
-        /* Media queries for responsive grid */
-        @media (max-width: 992px) {
-            #results-grid-container {
-                max-width: 90%; /* MODIFIED */
-            }
-        }
-        @media (max-width: 768px) {
-            #results-grid-container {
-                grid-template-columns: repeat(4, 1fr);
-                max-width: 100%; /* MODIFIED */
-                gap: 0.5rem;
-            }
-        }
-        @media (max-width: 480px) {
-            #results-grid-container {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 0.4rem;
-            }
-            .result-box .time-spent {
-                font-size: 0.85rem;
-            }
-        }
-         .explanation-box {
-             background-color: #f3f4f6; 
-             border: 1px solid #d1d5db;   
-             padding: 0.5rem 0.75rem; 
-             margin-top: 0.75rem; 
-             border-radius: 0.375rem; 
-             color: #111827; 
-        }
-
-         .review-grid-button {
-             padding: 0.5rem 0.25rem; 
-             border: 1px solid #d1d5db; 
-             border-radius: 0.375rem;
-             text-align: center;
-             transition: background-color 0.2s ease, border-color 0.2s ease;
-             font-size: 0.875rem;
-             line-height: 1.25rem;
-             cursor: pointer;
-         }
-         .review-grid-button-answered {
-             background-color: #dcfce7; 
-             border-color: #86efac; 
-             color: #15803d; 
-         }
-         .review-grid-button-unanswered {
-             background-color: #f3f4f6; 
-             border-color: #d1d5db; 
-             color: #4b5563; 
-         }
-          .review-grid-button:hover {
-             filter: brightness(95%); 
-          }
+        /* Results Screen Grid */
+        #results-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 0.75rem; padding: 1rem 0; width: 100%; }
+        .result-box { display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1 / 1; padding: 0.25rem; border-radius: 0.5rem; color: white; text-align: center; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); width: 100%; height: auto; }
+        .result-box:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+        .result-box-correct { background-color: #22c55e; border: 1px solid #16a34a; }
+        .result-box-incorrect { background-color: #ef4444; border: 1px solid #dc2626; }
+        .result-box-flagged { outline: 3px solid #f59e0b; outline-offset: 2px; }
+        .result-box .time-spent { font-size: 1rem; font-weight: 600; line-height: 1.1; }
+        .question-num-label { font-size: 0.75rem; color: #4b5563; text-align: center; width: 100%; margin-top: 0.25rem; }
 
         @media (max-width: 768px) {
-            #app-container {
-                 height: auto; 
-                 margin: 0.5rem;
-            }
-            .main-content-area {
-                flex-direction: column; 
-                padding: 0.5rem;
-                gap: 0.5rem;
-            }
-            .passage-column, .question-column {
-                flex-basis: auto;
-                width: 100%; 
-                height: auto; 
-                max-height: 40vh; 
-                padding: 0.75rem;
-            }
-            .header-bar, .footer-bar {
-                padding: 0.5rem 1rem;
-            }
-            .header-bar span, .footer-bar button, .font-size-button { 
-                font-size: 0.8rem;
-            }
-            button, .button {
-                padding: 0.4rem 0.8rem;
-            }
-             .footer-bar button {
-                 padding: 0.3rem 0.6rem;
-                 font-size: 0.75rem;
-             }
-            .grid-cols-5 { grid-template-columns: repeat(4, minmax(0, 1fr)); } 
-            #review-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } 
-            .review-grid-button { font-size: 0.8rem; }
-        }
-        @media (max-width: 480px) {
-             .grid-cols-5 { grid-template-columns: repeat(3, minmax(0, 1fr)); } 
-             #review-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } 
-             .header-bar span, .footer-bar button, .font-size-button { font-size: 0.75rem; }
-             button, .button {
-                 padding: 0.3rem 0.6rem;
-             }
-              .footer-bar button {
-                 padding: 0.25rem 0.5rem;
-                 font-size: 0.7rem;
-              }
-             .option-label { padding: 0.5rem 0.75rem;} 
-             .review-grid-button { font-size: 0.75rem; }
-         }
-        @media (max-width: 600px) { 
-            #results-grid-container {
-                gap: 0.25rem;
-            }
-            .result-box .time-spent {
-                font-size: 0.875rem;
-            }
-            .result-box .question-num-label {
-                font-size: 0.6rem; 
-            }
-        }
-        @media (max-width: 400px) { 
-            .result-box .time-spent {
-                font-size: 0.75rem;
-            }
-            .result-box .question-num-label {
-                font-size: 0.5rem; 
-            }
-              .result-box {
-                padding: 0.1rem;
-              }
+            #app-container { height: auto; margin: 0.5rem; }
+            .main-content-area { flex-direction: column; padding: 0.5rem; gap: 0.5rem; }
+            .passage-column, .question-column { flex-basis: auto; width: 100%; height: auto; max-height: 40vh; padding: 0.75rem; }
+            .header-bar, .footer-bar { padding: 0.5rem 1rem; }
+            .header-bar span, .footer-bar button, .font-size-button { font-size: 0.8rem; }
+            #review-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
         }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     </head>
-<body>
+<body class="theme-background">
 
-    <div id="app-container">
+    <div id="app-container" class="!border-none !shadow-none !m-0 !rounded-none">
 
-        <div id="setup-screen" class="p-6 md:p-8 flex flex-col justify-center items-center h-full">
-             <div class="text-center mb-6">
-                 <img src="https://ik.imagekit.io/mwp/MWP%20Color%20no%20background.png?updatedAt=1745982959141"
-                      alt="MedwithPurpose Logo"
-                      class="mx-auto h-20 w-auto mb-4"
-                      onerror="this.style.display='none'; this.onerror=null;">
-                 <h1 class="text-2xl md:text-3xl font-bold text-gray-900">UCAT Verbal Reasoning Practice</h1> <p class="text-gray-900 mt-2">Prepare for the UCAT VR section.</p> <p class="text-sm text-gray-900 mt-4"> This section contains <strong id="setup-question-count">16 questions</strong> and you have <strong id="setup-time-limit">10 minutes</strong> to complete it.
-                </p>
-             </div>
-             <div class="space-y-4 w-full max-w-md">
-                 <div>
-                     <label for="name" class="block text-sm font-medium text-gray-900">Name:</label> <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter your name">
-                 </div>
-                 <div>
-                     <label for="goal" class="block text-sm font-medium text-gray-900">Goal (Score out of 16):</label> <input type="number" id="goal" name="goal" min="0" max="16" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="e.g., 12">
-                 </div>
-                 <div>
-                     <label for="focus-area" class="block text-sm font-medium text-gray-900">Area of Focus / Intention For Practice:</label> <input type="text" id="focus-area" name="focus-area" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="e.g., True/False/Can't Tell, Speed">
-                 </div>
-             </div>
-             <div class="mt-8 text-center">
-                 <button id="start-button" class="primary-button text-lg px-8 py-3">
-                     Start Exam
-                 </button>
-             </div>
+        <div id="setup-screen" class="p-4 md:p-8 flex flex-col justify-center items-center h-full w-full">
+            <div class="w-full max-w-lg text-center">
+                <img src="https://ik.imagekit.io/mwp/MWP%20Color%20no%20background.png?updatedAt=1745982959141"
+                     alt="MedwithPurpose Logo"
+                     class="mx-auto h-24 w-auto mb-6"
+                     onerror="this.style.display='none'; this.onerror=null;">
+                <div class="card p-8 md:p-10">
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Verbal Reasoning Practice</h1>
+                    <p class="text-gray-600 mt-2 text-lg mb-8">Sharpen your skills for the UCAT VR section.</p>
+                    <div class="text-left space-y-3 mb-8 bg-blue-50/50 border border-blue-200/50 rounded-lg p-4">
+                        <p class="text-sm text-gray-800"><strong class="font-semibold">Questions:</strong> <span id="setup-question-count">16</span></p>
+                        <p class="text-sm text-gray-800"><strong class="font-semibold">Time Limit:</strong> <span id="setup-time-limit">10 minutes</span></p>
+                    </div>
+
+                    <div class="space-y-6 text-left">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                            <input type="text" id="name" name="name" class="themed-input mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter your name">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="goal" class="block text-sm font-medium text-gray-700 mb-1">Score Goal</label>
+                                <input type="number" id="goal" name="goal" min="0" max="16" class="themed-input mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-sm" placeholder="e.g., 12">
+                            </div>
+                            <div>
+                                <label for="focus-area" class="block text-sm font-medium text-gray-700 mb-1">Practice Intention</label>
+                                <input type="text" id="focus-area" name="focus-area" class="themed-input mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-sm" placeholder="e.g., Speed, Accuracy">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10">
+                        <button id="start-button" class="primary-button-new w-full text-lg">
+                            Start Exam
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
+
 
         <div id="exam-screen" class="hidden flex flex-col h-full">
             <div class="header-bar">
@@ -435,24 +216,18 @@
                     </button>
                 </div>
             </div>
-
             <div class="main-content-area">
                 <div class="passage-column resizable-text">
                     <h3 class="text-lg font-semibold mb-2 sticky top-0 bg-white text-gray-900 pb-1">Passage <span id="passage-number">1</span></h3>
-                    <div id="passage-text" class="text-base text-gray-900 leading-relaxed whitespace-pre-wrap">
-                        </div>
+                    <div id="passage-text" class="text-base text-gray-900 leading-relaxed whitespace-pre-wrap"></div>
                 </div>
-
                 <div class="question-column resizable-text">
                      <h4 class="text-md font-semibold mb-3 sticky top-0 bg-white text-gray-900 pb-1">Question <span id="question-number">1</span></h4>
-                    <p id="question-text" class="mb-4 text-gray-900">
-                        </p>
-                    <div id="options-container" class="space-y-2">
-                        </div>
+                    <p id="question-text" class="mb-4 text-gray-900"></p>
+                    <div id="options-container" class="space-y-2"></div>
                     <div id="review-explanation-container"></div>
                 </div>
             </div>
-
             <div class="footer-bar">
                 <button id="back-to-results-button" class="hidden mr-auto">← Back to Results</button>
                 <button id="end-exam-button-footer">End Exam</button>
@@ -464,79 +239,89 @@
             </div>
         </div>
 
-        <div id="review-screen" class="hidden p-6 md:p-8 flex flex-col items-center h-full overflow-y-auto">
+        <div id="review-screen" class="hidden p-6 md:p-8 flex-col items-center h-full overflow-y-auto bg-gray-50">
              <div class="w-full max-w-3xl mb-4 flex justify-between items-center">
-                 <h2 class="text-2xl font-bold text-gray-900">Review Your Answers</h2> <button id="filter-flagged-button" class="secondary-button text-sm">Show Flagged Only</button>
+                 <h2 class="text-2xl font-bold text-gray-900">Review Your Answers</h2> <button id="filter-flagged-button" class="bg-white border border-gray-300 text-gray-700 px-3 py-1 rounded-md text-sm hover:bg-gray-100">Show Flagged Only</button>
             </div>
-             <p class="text-center text-gray-900 mb-6">Click on a question number to review it. Green indicates answered, Yellow border indicates flagged.</p> <div id="review-grid" class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-10 gap-3 mb-6 w-full max-w-3xl">
-                </div>
+             <p class="text-center text-gray-600 mb-6">Click on a question number to review it. Green indicates answered, Yellow border indicates flagged.</p>
+             <div id="review-grid" class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-10 gap-3 mb-6 w-full max-w-3xl"></div>
             <div class="mt-auto pt-6">
-                <button id="end-exam-button" class="danger-button text-lg px-8 py-3">
+                <button id="end-exam-button" class="bg-red-600 text-white hover:bg-red-700 text-lg px-8 py-3 rounded-md">
                     End Exam & See Results
                 </button>
             </div>
         </div>
 
-        <div id="results-screen" class="hidden p-6 md:p-8 flex flex-col h-full overflow-y-auto">
-             <div class="text-center mb-6 flex-shrink-0">
-                 <img src="https://ik.imagekit.io/mwp/MWP%20Color%20no%20background.png?updatedAt=1745982959141"
-                      alt="MedwithPurpose Logo"
-                      class="mx-auto h-16 w-auto mb-4"
-                      onerror="this.style.display='none'; this.onerror=null;">
-                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Exam Results</h2> </div>
-            <div class="bg-blue-50 p-4 rounded-lg mb-6 text-center flex-shrink-0 text-gray-900"> <p class="text-lg font-semibold">Your Score: <span id="score" class="text-gray-900">0</span> / <span id="total-questions-results">16</span></p> <p>Time Taken: <span id="time-taken"></span></p>
-            </div>
-            
-            <div id="performance-analytics-container" class="grid md:grid-cols-2 gap-6 mb-6 text-gray-900 flex-shrink-0">
-                <div class="bg-gray-50 p-4 rounded-lg">
-                    <h4 class="text-lg font-semibold mb-2 text-center">Time Analysis</h4>
-                    <div id="time-analysis-results" class="space-y-2"></div>
-                </div>
-                <div class="bg-gray-50 p-4 rounded-lg">
-                    <h4 class="text-lg font-semibold mb-2 text-center">Performance by Type</h4>
-                    <div id="type-analysis-results" class="space-y-1"></div>
-                </div>
-            </div>
 
-            <h3 class="text-xl font-semibold mb-2 flex-shrink-0 text-gray-900">Detailed Results:</h3> <p class="text-sm text-gray-900 mb-4 flex-shrink-0">Click on a question box below to review it.</p>
-            <div id="results-grid-container" class="flex-shrink-0">
+        <div id="results-screen" class="hidden p-4 md:p-8 flex-col h-full overflow-y-auto w-full">
+            <div class="w-full max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Exam Results</h2>
+                    <p class="text-gray-600 mt-2">Here's a breakdown of your performance.</p>
                 </div>
 
-            <div class="mt-6 flex-shrink-0 border-t pt-4">
-                <h3 class="text-xl font-semibold mb-4 text-gray-900">Reflection</h3>
-                <div class="space-y-4">
-                    <div>
-                        <label for="reflection-q1" class="block text-md font-semibold text-gray-900 mb-1">Which question type (e.g., T/F/CT) was most challenging, and why?</label>
-                        <textarea id="reflection-q1" rows="3" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+                <div class="card p-8 mb-8 text-center">
+                    <p class="text-lg text-gray-600 mb-2">Your Score</p>
+                    <p class="text-6xl font-bold text-gray-900"><span id="score">0</span><span class="text-4xl text-gray-500"> / <span id="total-questions-results">16</span></span></p>
+                    <div class="mt-4 h-1 w-24 bg-indigo-200 mx-auto rounded-full"></div>
+                    <p class="mt-4 text-md text-gray-500">Time Taken: <span id="time-taken" class="font-semibold"></span></p>
+                </div>
+
+                <div class="grid md:grid-cols-5 gap-8 mb-8">
+                    <div class="md:col-span-2 space-y-8">
+                        <div class="card p-6">
+                            <h4 class="text-lg font-semibold mb-3 text-center text-gray-800">Time Analysis</h4>
+                            <div id="time-analysis-results" class="space-y-2 text-sm text-gray-600"></div>
+                        </div>
+                        <div class="card p-6">
+                            <h4 class="text-lg font-semibold mb-3 text-center text-gray-800">Performance by Type</h4>
+                            <div id="type-analysis-results" class="space-y-2 text-sm text-gray-600"></div>
+                        </div>
                     </div>
-                    <div>
-                        <label for="reflection-q2" class="block text-md font-semibold text-gray-900 mb-1">Which question took you the longest, and why do you think that was?</label>
-                        <textarea id="reflection-q2" rows="3" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
-                    </div>
-                    <div>
-                        <label for="reflection-q3" class="block text-md font-semibold text-gray-900 mb-1">Did you stick to your stated 'Area of Focus'? If not, what distracted you?</label>
-                        <textarea id="reflection-q3" rows="3" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+                    <div class="md:col-span-3 card p-6">
+                         <h3 class="text-lg font-semibold mb-1 text-gray-800">Detailed Results</h3>
+                         <p class="text-sm text-gray-500 mb-4">Click a box to review the question.</p>
+                         <div id="results-grid-container"></div>
                     </div>
                 </div>
-            </div>
 
-              <div class="mt-6 text-center flex-shrink-0 flex justify-center space-x-4">
-                <button onclick="window.location.reload()" class="secondary-button px-6 py-2">
-                    Try Again
-                </button>
-                <button id="download-pdf-button" class="primary-button px-6 py-2">
-                    Download Results PDF
-                </button>
+                <div class="card p-8 mb-8">
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800">Reflection</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="reflection-q1" class="block text-md font-semibold text-gray-700 mb-2">Which question type was most challenging, and why?</label>
+                            <textarea id="reflection-q1" rows="3" class="themed-input block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm" placeholder="e.g., Inference questions were tricky because..."></textarea>
+                        </div>
+                        <div>
+                            <label for="reflection-q2" class="block text-md font-semibold text-gray-700 mb-2">Which question took you the longest, and why?</label>
+                            <textarea id="reflection-q2" rows="3" class="themed-input block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm" placeholder="e.g., Question 7 took a while because I had to re-read the passage..."></textarea>
+                        </div>
+                        <div>
+                            <label for="reflection-q3" class="block text-md font-semibold text-gray-700 mb-2">Did you stick to your 'Practice Intention'? If not, what distracted you?</label>
+                            <textarea id="reflection-q3" rows="3" class="themed-input block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm" placeholder="I wanted to focus on speed, but got bogged down in the details..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center flex justify-center items-center space-x-4">
+                    <button onclick="window.location.reload()" class="secondary-button-new">
+                        Try Again
+                    </button>
+                    <button id="download-pdf-button" class="primary-button-new">
+                        Download Results PDF
+                    </button>
+                </div>
             </div>
         </div>
+
 
         <div id="navigator-modal" class="modal">
             <div class="modal-content bg-white p-6 rounded-lg shadow-xl">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-xl font-semibold text-gray-900">Question Navigator</h3> <button id="close-modal-button" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
                 </div>
-                 <p class="text-sm text-gray-900 mb-4">Click a number to jump. Green: answered, Yellow border: flagged.</p> <div id="navigator-grid" class="grid grid-cols-5 gap-3">
-                     </div>
+                 <p class="text-sm text-gray-600 mb-4">Click a number to jump. Green: answered, Yellow border: flagged.</p>
+                 <div id="navigator-grid" class="grid grid-cols-5 gap-3"></div>
             </div>
         </div>
 
@@ -554,35 +339,34 @@
             // Passage 4: Grief and Memory
             `It is nearly two years since Daniel's laugh last echoed through these rooms, yet most mornings I still set two cups on the oak table before I remember. The second cup has become a ritual of surrender rather than denial; steam curls upward like the conversation we never finished, reminding me that presence can be poured even when a chair is empty. His corduroy jacket still hangs by the garden door, pockets full of seed packets scribbled with hopeful dates. Come spring I scatter them exactly as he once did, trusting his handwriting more than any almanac. The marigolds bloom late but riotous, as though determined to prove that instructions penned by a steady hand can outlast its pulse.\nI wind his pocket-watch every Sunday. The mechanism-brass gears and patient clicks-keeps perfect time, an irony he would have enjoyed, considering how often he arrived fashionably late to weddings and early to farewells. When the watch rests against my palm I feel less like a widow and more like the caretaker of an unbroken promise: that the ordinary can be sacred if tended daily.\nMemory, I have learned, is not a museum exhibit but a migratory bird. Some days it lands gently, offering a song; on others it startles at the slightest noise and leaves me staring at the sky it occupies. Still, I keep the windows open. Daniel taught me that grief, like compost, can coax life from what appears spent. Yesterday I laughed aloud while repainting the porch rail he once patched with mismatched screws. The colour is a shade brighter than before; I think he would approve he always said a home should reflect the weather of its inhabitants, and mine is clearing.\nI have not moved the garden bench where we planned next year's journeys. I sit there tonight, and the moonlight does the talking. Its silver grammar assures me that love, properly understood, is never once-spoken. It is revised, retold, and if we are brave-released into blooming silence. Somewhere between then and now, absence has learned to speak the language of possibility for us.`
         ];
-
         const questions = [
             // Questions for Passage 1: Nature
-            { passageIndex: 0, type: 'Inference/Conclusion', text: "Which statement would the author most likely endorse?", options: ["Authentic awe is found only by retreating from human-built environments.", "Attempting to co-create with nature is presumptuous because nature thrives without us.", "Small, deliberate acts-such as rooftop gardens or river stewardship-align humanity with nature's creative processes.", "Nature's most profound lessons emerge only through dramatic seasonal extremes."], correctAnswer: "C", explanation: `The passage explicitly praises "planting gardens on rooftops" and "protecting rivers" as ways we "step into our rightful role as co-creators."  Option A is incorrect because the text values urban greening.  Option B is contradicted by the co-creator theme.  Option D over-emphasises extremes; the author finds wisdom in subtle details and every season. ` },
-            { passageIndex: 0, type: 'Direct Retrieval/Inference', text: "Which of the following assertions is best supported by the passage?", options: ["The river's patient flow polishes stones and nourishes valleys, yet it is never depicted as altering mountains.", "Clouds are portrayed as fleeting illusions that warn against chasing unattainable dreams.", "Constellations are invoked to argue that each celestial spark exists in fundamental isolation from the others.", "Winter is characterised as a period of \"quiet strength,\" offering its own instructive value to humankind."], correctAnswer: "D", explanation: `The passage states "winter's lesson in quiet strength," directly confirming its instructive value.  Option A contradicts the line that the river "carves mountains."  Option B misreads the metaphor about clouds, which are meant to encourage pursuing horizons.  Option C reverses the passage's point that "everything is connected." ` },
-            { passageIndex: 0, type: 'Purpose/Inference', text: "The author's reference to the scent of rain on thirsty soil (\"petrichor\") serves primarily to", options: ["introduce a scientific curiosity that interrupts an otherwise poetic tone.", "trigger a sensory memory linking human renewal to Earth's own cycles.", "criticise urban living for masking natural fragrances.", "argue that rainfall is nature's most transformative phenomenon."], correctAnswer: "B", explanation: `The passage states petrichor "urges us to... remember our own capacity for renewal," directly linking the scent to human rejuvenation.  Option A is incorrect as the tone remains lyrical.  Option C is not asserted in the passage.  Option D exaggerates rainfall's role among many other natural symbols used. ` },
-            { passageIndex: 0, type: 'Purpose/Inference', text: "In context, describing \"the humble moss that cushions a fallen log\" is intended to", options: ["illustrate resilience by showing life flourishing in overlooked spaces, modelling quiet perseverance.", "lament the decay that inevitably follows a tree's collapse.", "claim that low-light flora are evolutionarily superior to flowering plants.", "suggest that such minor organisms contribute little of substance to ecosystem health."], correctAnswer: "A", explanation: `The moss "teaches resilience by thriving in places others overlook," which directly mirrors the answer in option A.  Option B introduces a sense of lament not present in the author's neutral tone.  Options C and D make claims that are entirely absent from the passage. ` },
+            { passageIndex: 0, type: 'Inference/Conclusion', text: "Which statement would the author most likely endorse?", options: ["Authentic awe is found only by retreating from human-built environments.", "Attempting to co-create with nature is presumptuous because nature thrives without us.", "Small, deliberate acts-such as rooftop gardens or river stewardship-align humanity with nature's creative processes.", "Nature's most profound lessons emerge only through dramatic seasonal extremes."], correctAnswer: "C", explanation: `The passage explicitly praises "planting gardens on rooftops" and "protecting rivers" as ways we "step into our rightful role as co-creators." Option A is incorrect because the text values urban greening. Option B is contradicted by the co-creator theme. Option D over-emphasises extremes; the author finds wisdom in subtle details and every season.` },
+            { passageIndex: 0, type: 'Direct Retrieval/Inference', text: "Which of the following assertions is best supported by the passage?", options: ["The river's patient flow polishes stones and nourishes valleys, yet it is never depicted as altering mountains.", "Clouds are portrayed as fleeting illusions that warn against chasing unattainable dreams.", "Constellations are invoked to argue that each celestial spark exists in fundamental isolation from the others.", "Winter is characterised as a period of \"quiet strength,\" offering its own instructive value to humankind."], correctAnswer: "D", explanation: `The passage states "winter's lesson in quiet strength," directly confirming its instructive value. Option A contradicts the line that the river "carves mountains." Option B misreads the metaphor about clouds, which are meant to encourage pursuing horizons. Option C reverses the passage's point that "everything is connected."` },
+            { passageIndex: 0, type: 'Purpose/Inference', text: "The author's reference to the scent of rain on thirsty soil (\"petrichor\") serves primarily to", options: ["introduce a scientific curiosity that interrupts an otherwise poetic tone.", "trigger a sensory memory linking human renewal to Earth's own cycles.", "criticise urban living for masking natural fragrances.", "argue that rainfall is nature's most transformative phenomenon."], correctAnswer: "B", explanation: `The passage states petrichor "urges us to... remember our own capacity for renewal," directly linking the scent to human rejuvenation. Option A is incorrect as the tone remains lyrical. Option C is not asserted in the passage. Option D exaggerates rainfall's role among many other natural symbols used.` },
+            { passageIndex: 0, type: 'Purpose/Inference', text: "In context, describing \"the humble moss that cushions a fallen log\" is intended to", options: ["illustrate resilience by showing life flourishing in overlooked spaces, modelling quiet perseverance.", "lament the decay that inevitably follows a tree's collapse.", "claim that low-light flora are evolutionarily superior to flowering plants.", "suggest that such minor organisms contribute little of substance to ecosystem health."], correctAnswer: "A", explanation: `The moss "teaches resilience by thriving in places others overlook," which directly mirrors the answer in option A. Option B introduces a sense of lament not present in the author's neutral tone. Options C and D make claims that are entirely absent from the passage.` },
             // Questions for Passage 2: Strategic Divestment
-            { passageIndex: 1, type: 'Inference/Conclusion', text: "Which statement would the author most likely endorse?", options: ["Divestment is primarily a defensive tactic used when a company faces financial distress.", "Selling non-core assets can strengthen a firm's future by redirecting resources toward high-potential areas.", "Investors generally penalise companies that sell profitable units, interpreting the move as uncertainty.", "The main value of divestment lies in reducing headcount and operational complexity."], correctAnswer: "B", explanation: `The passage frames divestment as "pruning" and "concentrating sunlight on the branches most likely to bear fruit," which supports the idea of strengthening the future by redirecting resources.  Option A is incorrect as the tone is forward-looking, not purely defensive. Option C conflicts with the text's claim that investors "frequently reward" decisive action. Option D is too narrow, ignoring the key theme of strategic reinvestment. ` },
-            { passageIndex: 1, type: 'Direct Retrieval/Inference', text: "Which of the following assertions is best supported by the passage?", options: ["Divestments inevitably lead to short-term valuation decline before any long-term benefits appear.", "First movers in divestment decisions often receive positive market reactions signalling strategic clarity.", "Legacy factories typically outperform newer digital platforms in return on capital employed.", "Talent retention is rarely affected by the sale of a business line if communication is swift."], correctAnswer: "B", explanation: `The text explicitly states that "The investor community frequently rewards the firm that moves first, interpreting action as proof of strategic clarity."  Option A is contradicted by this. Option C makes a performance claim not supported by the text. Option D is incorrect as the passage warns a "rushed sale can trigger talent flight." ` },
-            { passageIndex: 1, type: 'Purpose/Inference', text: "The author describes \"legacy factories kept alive by sentimentality\" primarily to", options: ["criticise executives for disregarding employee nostalgia.", "illustrate how emotional attachment can obscure rational capital allocation.", "highlight the superior environmental footprint of older industrial plants.", "suggest that manufacturing assets are harder to sell than service units."], correctAnswer: "B", explanation: `The passage links "sentimentality" to assets that "consume invisible bandwidth," illustrating the concept of "intangible drag" where emotional bias clouds rational decision-making.  Option A focuses on blame, whereas the author is illustrating a business principle. Options C and D introduce topics (environment, sale difficulty) not mentioned in the passage. ` },
-            { passageIndex: 1, type: 'Purpose/Inference', text: "In context, comparing successful divestments to \"well-edited manuscripts\" serves mainly to", options: ["emphasise that deletion, not addition, can clarify an organisation's strategic narrative.", "argue that corporate reports should adopt more literary language.", "indicate that most divestments are driven by external editors such as activist investors.", "imply that regulatory reviewers act as proof-readers in complex transactions."], correctAnswer: "A", explanation: `The metaphor is explained with the phrase "what is omitted sharpens what remains on the page," which directly supports the idea that removing assets (deletion) clarifies strategic focus.  Option B is about writing style, not strategy. Options C and D introduce external parties (activist investors, regulators) not mentioned in the text. ` },
+            { passageIndex: 1, type: 'Inference/Conclusion', text: "Which statement would the author most likely endorse?", options: ["Divestment is primarily a defensive tactic used when a company faces financial distress.", "Selling non-core assets can strengthen a firm's future by redirecting resources toward high-potential areas.", "Investors generally penalise companies that sell profitable units, interpreting the move as uncertainty.", "The main value of divestment lies in reducing headcount and operational complexity."], correctAnswer: "B", explanation: `The passage frames divestment as "pruning" and "concentrating sunlight on the branches most likely to bear fruit," which supports the idea of strengthening the future by redirecting resources. Option A is incorrect as the tone is forward-looking, not purely defensive. Option C conflicts with the text's claim that investors "frequently reward" decisive action. Option D is too narrow, ignoring the key theme of strategic reinvestment.` },
+            { passageIndex: 1, type: 'Direct Retrieval/Inference', text: "Which of the following assertions is best supported by the passage?", options: ["Divestments inevitably lead to short-term valuation decline before any long-term benefits appear.", "First movers in divestment decisions often receive positive market reactions signalling strategic clarity.", "Legacy factories typically outperform newer digital platforms in return on capital employed.", "Talent retention is rarely affected by the sale of a business line if communication is swift."], correctAnswer: "B", explanation: `The text explicitly states that "The investor community frequently rewards the firm that moves first, interpreting action as proof of strategic clarity." Option A is contradicted by this. Option C makes a performance claim not supported by the text. Option D is incorrect as the passage warns a "rushed sale can trigger talent flight."` },
+            { passageIndex: 1, type: 'Purpose/Inference', text: "The author describes \"legacy factories kept alive by sentimentality\" primarily to", options: ["criticise executives for disregarding employee nostalgia.", "illustrate how emotional attachment can obscure rational capital allocation.", "highlight the superior environmental footprint of older industrial plants.", "suggest that manufacturing assets are harder to sell than service units."], correctAnswer: "B", explanation: `The passage links "sentimentality" to assets that "consume invisible bandwidth," illustrating the concept of "intangible drag" where emotional bias clouds rational decision-making. Option A focuses on blame, whereas the author is illustrating a business principle. Options C and D introduce topics (environment, sale difficulty) not mentioned in the passage.` },
+            { passageIndex: 1, type: 'Purpose/Inference', text: "In context, comparing successful divestments to \"well-edited manuscripts\" serves mainly to", options: ["emphasise that deletion, not addition, can clarify an organisation's strategic narrative.", "argue that corporate reports should adopt more literary language.", "indicate that most divestments are driven by external editors such as activist investors.", "imply that regulatory reviewers act as proof-readers in complex transactions."], correctAnswer: "A", explanation: `The metaphor is explained with the phrase "what is omitted sharpens what remains on the page," which directly supports the idea that removing assets (deletion) clarifies strategic focus. Option B is about writing style, not strategy. Options C and D introduce external parties (activist investors, regulators) not mentioned in the text.` },
             // Questions for Passage 3: Fine Chinaware
-            { passageIndex: 2, type: 'Inference/Conclusion', text: "Which statement would the author most likely endorse?", options: ["Chinaware's relevance has faded in an era that prizes disposable tableware.", "Integrating modern technology can coexist with traditional porcelain craftsmanship.", "The primary appeal of chinaware lies in its monetary value to collectors.", "European mastery of porcelain eliminated any need for Chinese imports."], correctAnswer: "B", explanation: `The passage describes artisans who "slip smart sensors beneath the glaze," and concludes that "preserving tradition does not require halting innovation."  This directly supports the coexistence of technology and tradition. Option A is contradicted by the author's argument for chinaware's sustainability. Option C ignores the cultural and historical value discussed. Option D is an overstatement, as the passage notes that the "mystique" of Chinese porcelain lingered. ` },
-            { passageIndex: 2, type: 'Direct Retrieval', text: "Which of the following assertions is best supported by the passage?", options: ["Properly vitrified porcelain withstands sudden temperature changes better than thick earthenware.", "Smart sensors compromise the aesthetic purity of fine chinaware.", "Early Chinese porcelain relied on industrial espionage from Europe.", "Disposable bamboo plates produce less total environmental impact than porcelain."], correctAnswer: "A", explanation: `The passage explicitly states that "properly vitrified porcelain resists thermal shock better than thick earthenware."  Option B is an unsubstantiated opinion. Option C reverses the historical flow of information. Option D is contradicted by the author's argument that chinaware's longevity amortises its embodied energy over generations. ` },
-            { passageIndex: 2, type: 'Purpose/Inference', text: "The author describes \"whisper walls\" primarily to", options: ["criticise mass-produced ceramic plates for being too heavy.", "illustrate that delicacy can coexist with structural resilience in porcelain.", "highlight the danger of using chinaware for hot beverages.", "argue that collectors prioritise visual motifs over functional quality."], correctAnswer: "B", explanation: `The passage mentions thin "whisper walls" directly after discussing the molecular harmony that provides strength, and notes that "strength hides within that delicacy," highlighting the core paradox of being both delicate and durable.  Options A and C are not mentioned. Option D misinterprets collector appreciation, which the passage implies includes its physical properties. ` },
-            { passageIndex: 2, type: 'Purpose/Inference', text: "In context, noting that Meissen's discovery \"fuelled industrial espionage\" serves mainly to", options: ["demonstrate that technological secrets in luxury goods often provoke fierce competition.", "suggest that European nations rejected Chinese artistic influence thereafter.", "imply that scientific breakthroughs rarely influence diplomatic relations.", "claim that brand reputation matters less than production volume in porcelain."], correctAnswer: "A", explanation: `The mention of "industrial espionage" following the discovery of the porcelain formula is a direct example of the fierce competition sparked by valuable technological secrets in the luxury goods market.  Option B is incorrect, as Chinese influence remained. Option C is contradicted by the example itself. Option D introduces the concept of production volume, which is not discussed. ` },
+            { passageIndex: 2, type: 'Inference/Conclusion', text: "Which statement would the author most likely endorse?", options: ["Chinaware's relevance has faded in an era that prizes disposable tableware.", "Integrating modern technology can coexist with traditional porcelain craftsmanship.", "The primary appeal of chinaware lies in its monetary value to collectors.", "European mastery of porcelain eliminated any need for Chinese imports."], correctAnswer: "B", explanation: `The passage describes artisans who "slip smart sensors beneath the glaze," and concludes that "preserving tradition does not require halting innovation." This directly supports the coexistence of technology and tradition. Option A is contradicted by the author's argument for chinaware's sustainability. Option C ignores the cultural and historical value discussed. Option D is an overstatement, as the passage notes that the "mystique" of Chinese porcelain lingered.` },
+            { passageIndex: 2, type: 'Direct Retrieval', text: "Which of the following assertions is best supported by the passage?", options: ["Properly vitrified porcelain withstands sudden temperature changes better than thick earthenware.", "Smart sensors compromise the aesthetic purity of fine chinaware.", "Early Chinese porcelain relied on industrial espionage from Europe.", "Disposable bamboo plates produce less total environmental impact than porcelain."], correctAnswer: "A", explanation: `The passage explicitly states that "properly vitrified porcelain resists thermal shock better than thick earthenware." Option B is an unsubstantiated opinion. Option C reverses the historical flow of information. Option D is contradicted by the author's argument that chinaware's longevity amortises its embodied energy over generations.` },
+            { passageIndex: 2, type: 'Purpose/Inference', text: "The author describes \"whisper walls\" primarily to", options: ["criticise mass-produced ceramic plates for being too heavy.", "illustrate that delicacy can coexist with structural resilience in porcelain.", "highlight the danger of using chinaware for hot beverages.", "argue that collectors prioritise visual motifs over functional quality."], correctAnswer: "B", explanation: `The passage mentions thin "whisper walls" directly after discussing the molecular harmony that provides strength, and notes that "strength hides within that delicacy," highlighting the core paradox of being both delicate and durable. Options A and C are not mentioned. Option D misinterprets collector appreciation, which the passage implies includes its physical properties.` },
+            { passageIndex: 2, type: 'Purpose/Inference', text: "In context, noting that Meissen's discovery \"fuelled industrial espionage\" serves mainly to", options: ["demonstrate that technological secrets in luxury goods often provoke fierce competition.", "suggest that European nations rejected Chinese artistic influence thereafter.", "imply that scientific breakthroughs rarely influence diplomatic relations.", "claim that brand reputation matters less than production volume in porcelain."], correctAnswer: "A", explanation: `The mention of "industrial espionage" following the discovery of the porcelain formula is a direct example of the fierce competition sparked by valuable technological secrets in the luxury goods market. Option B is incorrect, as Chinese influence remained. Option C is contradicted by the example itself. Option D introduces the concept of production volume, which is not discussed.` },
             // Questions for Passage 4: Grief and Memory
-            { passageIndex: 3, type: 'Inference/Conclusion', text: "Which statement would the narrator most likely endorse?", options: ["True healing requires locking away painful memories until they fade.", "Everyday rituals can preserve and even deepen the bond with someone who has passed.", "Moving forward necessitates removing all reminders of the deceased from one's surroundings.", "Love is meaningful only when shared verbally in the present."], correctAnswer: "B", explanation: `The narrator engages in daily rituals like setting two cups and winding a watch.  These acts are described as making the ordinary sacred and preserving an "unbroken promise," showing how such rituals deepen her connection.  Options A and C are directly contradicted by her actions of keeping his jacket and using his seeds.  Option D is contradicted by the idea that love is "revised, retold, and... released into blooming silence." ` },
-            { passageIndex: 3, type: 'Direct Retrieval/Inference', text: "Which assertion is best supported by the passage?", options: ["Repainting the porch rail in a brighter colour symbolises the narrator's emerging renewal.", "The pocket-watch frequently stops, representing the end of shared time.", "The jacket by the door shows the narrator's inability to manage practical tasks left behind.", "The seed packets are discarded because she distrusts Daniel's gardening notes."], correctAnswer: "A", explanation: `The narrator says the new, brighter paint reflects the "weather of its inhabitants, and mine is clearing."  This is an explicit metaphor for her emotional renewal and healing.  Option B contradicts the text, which says the watch "keeps perfect time."  Options C and D misinterpret her actions; she cherishes the jacket and trusts the seeds. ` },
-            { passageIndex: 3, type: 'Purpose/Inference', text: "The description of the pocket-watch that \"keeps perfect time\" primarily serves to", options: ["highlight the narrator's frustration with Daniel's habitual tardiness.", "illustrate how ordinary objects can embody enduring promises.", "argue that mechanical watches are superior to digital ones.", "emphasise the financial value of treasured heirlooms."], correctAnswer: "B", explanation: `The narrator feels the watch is "the caretaker of an unbroken promise: that the ordinary can be sacred if tended daily."  This shows the object's role in embodying a lasting promise and meaning.  Option A misses the affectionate, rather than frustrated, tone regarding his tardiness. Options C and D introduce arguments about technology and money that are not in the text. ` },
-            { passageIndex: 3, type: 'Purpose/Inference', text: "In context, likening memory to \"a migratory bird\" chiefly", options: ["conveys its unpredictable arrival and departure, shaping the narrator's emotions.", "suggests memories should be caged and controlled.", "criticises bird imagery as clichéd in grieving narratives.", "indicates the narrator's newfound interest in ornithology."], correctAnswer: "A", explanation: `The metaphor describes memory landing "gently" some days while on others it "startles... and leaves."  This directly conveys the unpredictable nature of memory and its emotional impact, which aligns perfectly with option A.  Option B (caging) is the opposite of her "open windows" approach.  Options C and D introduce ideas not mentioned in the passage. ` }
+            { passageIndex: 3, type: 'Inference/Conclusion', text: "Which statement would the narrator most likely endorse?", options: ["True healing requires locking away painful memories until they fade.", "Everyday rituals can preserve and even deepen the bond with someone who has passed.", "Moving forward necessitates removing all reminders of the deceased from one's surroundings.", "Love is meaningful only when shared verbally in the present."], correctAnswer: "B", explanation: `The narrator engages in daily rituals like setting two cups and winding a watch. These acts are described as making the ordinary sacred and preserving an "unbroken promise," showing how such rituals deepen her connection. Options A and C are directly contradicted by her actions of keeping his jacket and using his seeds. Option D is contradicted by the idea that love is "revised, retold, and... released into blooming silence."` },
+            { passageIndex: 3, type: 'Direct Retrieval/Inference', text: "Which assertion is best supported by the passage?", options: ["Repainting the porch rail in a brighter colour symbolises the narrator's emerging renewal.", "The pocket-watch frequently stops, representing the end of shared time.", "The jacket by the door shows the narrator's inability to manage practical tasks left behind.", "The seed packets are discarded because she distrusts Daniel's gardening notes."], correctAnswer: "A", explanation: `The narrator says the new, brighter paint reflects the "weather of its inhabitants, and mine is clearing." This is an explicit metaphor for her emotional renewal and healing. Option B contradicts the text, which says the watch "keeps perfect time." Options C and D misinterpret her actions; she cherishes the jacket and trusts the seeds.` },
+            { passageIndex: 3, type: 'Purpose/Inference', text: "The description of the pocket-watch that \"keeps perfect time\" primarily serves to", options: ["highlight the narrator's frustration with Daniel's habitual tardiness.", "illustrate how ordinary objects can embody enduring promises.", "argue that mechanical watches are superior to digital ones.", "emphasise the financial value of treasured heirlooms."], correctAnswer: "B", explanation: `The narrator feels the watch is "the caretaker of an unbroken promise: that the ordinary can be sacred if tended daily." This shows the object's role in embodying a lasting promise and meaning. Option A misses the affectionate, rather than frustrated, tone regarding his tardiness. Options C and D introduce arguments about technology and money that are not in the text.` },
+            { passageIndex: 3, type: 'Purpose/Inference', text: "In context, likening memory to \"a migratory bird\" chiefly", options: ["conveys its unpredictable arrival and departure, shaping the narrator's emotions.", "suggests memories should be caged and controlled.", "criticises bird imagery as clichéd in grieving narratives.", "indicates the narrator's newfound interest in ornithology."], correctAnswer: "A", explanation: `The metaphor describes memory landing "gently" some days while on others it "startles... and leaves." This directly conveys the unpredictable nature of memory and its emotional impact, which aligns perfectly with option A. Option B (caging) is the opposite of her "open windows" approach. Options C and D introduce ideas not mentioned in the passage.` }
         ];
 
-        // --- State ---
+        // --- State & Elements (unchanged from previous version) ---
         let currentQuestionIndex = 0;
         let userAnswers = new Array(questions.length).fill(null);
         let timerInterval;
-        let timeLeft = 10 * 60; // 10 minutes in seconds for 16 questions
+        let timeLeft = 10 * 60;
         let examStartTime;
         let examEndTime;
         let userName = '';
@@ -594,10 +378,8 @@
         let flaggedQuestions = new Array(questions.length).fill(false);
         let isFilteringFlagged = false;
         let currentlyDisplayedPassageIndex = -1;
-        let currentFontSize = 1.0; // Base font size in rem
+        let currentFontSize = 1.0;
 
-
-        // --- Elements ---
         const appContainer = document.getElementById('app-container');
         const setupScreen = document.getElementById('setup-screen');
         const examScreen = document.getElementById('exam-screen');
@@ -609,8 +391,8 @@
         const nextButton = document.getElementById('next-button');
         const navigatorButton = document.getElementById('navigator-button');
         const closeModalButton = document.getElementById('close-modal-button');
-        const endExamButton = document.getElementById('end-exam-button'); 
-        const endExamButtonFooter = document.getElementById('end-exam-button-footer'); 
+        const endExamButton = document.getElementById('end-exam-button');
+        const endExamButtonFooter = document.getElementById('end-exam-button-footer');
         const backToResultsButton = document.getElementById('back-to-results-button');
         const flagButton = document.getElementById('flag-button');
         const passageNumberEl = document.getElementById('passage-number');
@@ -625,7 +407,7 @@
         const scoreEl = document.getElementById('score');
         const totalQuestionsResultsEl = document.getElementById('total-questions-results');
         const timeTakenEl = document.getElementById('time-taken');
-        const resultsGridContainer = document.getElementById('results-grid-container'); 
+        const resultsGridContainer = document.getElementById('results-grid-container');
         const nameInput = document.getElementById('name');
         const goalInput = document.getElementById('goal');
         const focusAreaInput = document.getElementById('focus-area');
@@ -641,42 +423,34 @@
         const timeAnalysisResultsEl = document.getElementById('time-analysis-results');
         const typeAnalysisResultsEl = document.getElementById('type-analysis-results');
 
-
-        // --- Functions ---
+        // --- Functions (unchanged from previous version, with minor tweaks for new UI) ---
 
         function startTimer() {
             examStartTime = new Date();
             clearInterval(timerInterval);
             timerEl.textContent = formatTimeSeconds(timeLeft);
-            timerEl.classList.remove('text-gray-300'); 
-            timerEl.classList.add('text-white', 'bg-opacity-20', 'bg-white');
             timerInterval = setInterval(() => {
                 timeLeft--;
                 timerEl.textContent = formatTimeSeconds(timeLeft);
-                if (timeLeft <= 0) {
-                    endExamAndShowResults();
-                }
+                if (timeLeft <= 0) { endExamAndShowResults(); }
             }, 1000);
         }
 
         function stopTimer() {
             clearInterval(timerInterval);
-            examEndTime = examEndTime || new Date(); 
-            timerEl.classList.remove('text-white', 'bg-opacity-20', 'bg-white');
-            timerEl.classList.add('text-gray-300'); 
+            examEndTime = examEndTime || new Date();
         }
 
         function formatTimeSeconds(totalSeconds) {
-             if (totalSeconds < 0) totalSeconds = 0; 
+             if (totalSeconds < 0) totalSeconds = 0;
              const minutes = Math.floor(totalSeconds / 60);
              const seconds = totalSeconds % 60;
              return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
         }
-        
+
         function formatTimeMilliseconds(milliseconds) {
             if (!milliseconds || milliseconds < 0) return "0s";
-            const totalSeconds = (milliseconds / 1000).toFixed(1);
-            return `${totalSeconds}s`;
+            return `${(milliseconds / 1000).toFixed(1)}s`;
         }
 
         function formatTimeDifference(milliseconds) {
@@ -687,25 +461,20 @@
             return `${minutes} min ${seconds < 10 ? '0' : ''}${seconds} sec`;
         }
 
-        
         function recordTimeSpent(index) {
             if (questionStartTime && index >= 0 && index < questions.length) {
-                const timeSpent = Date.now() - questionStartTime;
-                questionTimes[index] = (questionTimes[index] || 0) + timeSpent; 
+                questionTimes[index] = (questionTimes[index] || 0) + (Date.now() - questionStartTime);
             }
-            questionStartTime = null; 
+            questionStartTime = null;
         }
 
-        
         function toggleFlag() {
-            if (isReviewingFromResults) return; 
-            const index = currentQuestionIndex;
-            flaggedQuestions[index] = !flaggedQuestions[index];
+            if (isReviewingFromResults) return;
+            flaggedQuestions[currentQuestionIndex] = !flaggedQuestions[currentQuestionIndex];
             updateFlagButtonAppearance();
-            updateNavigatorButtons(); 
+            updateNavigatorButtons();
         }
 
-        
         function updateFlagButtonAppearance() {
             const isFlagged = flaggedQuestions[currentQuestionIndex];
             flagButton.textContent = isFlagged ? 'Unflag' : 'Flag for Review';
@@ -714,659 +483,359 @@
 
         function updateFontSize() {
             resizableTextElements.forEach(el => {
-                // We target child elements inside the columns to avoid changing column padding/etc.
                 el.querySelectorAll('#passage-text, #question-text, .option-label').forEach(child => {
                      child.style.fontSize = `${currentFontSize}rem`;
                 });
             });
         }
 
-
         function loadQuestion(index, reviewMode = false) {
             if (index < 0 || index >= questions.length) return;
-            
-                  if (!isReviewingFromResults && !reviewMode) { 
-                       recordTimeSpent(currentQuestionIndex);
-                   }
+            if (!isReviewingFromResults && !reviewMode) { recordTimeSpent(currentQuestionIndex); }
 
             const question = questions[index];
             const newPassageIndex = question.passageIndex;
-            const passageContainer = document.querySelector('.passage-column');
-            const questionContainer = document.querySelector('.question-column');
-            
             if (newPassageIndex !== currentlyDisplayedPassageIndex || reviewMode) {
                 passageTextEl.innerHTML = passages[newPassageIndex].replace(/\n/g, '<br><br>');
                 passageNumberEl.textContent = newPassageIndex + 1;
                 currentlyDisplayedPassageIndex = newPassageIndex;
-                 if (passageContainer) passageContainer.scrollTop = 0; 
+                document.querySelector('.passage-column').scrollTop = 0;
             }
 
             currentQuestionIndex = index;
-            isReviewingFromResults = reviewMode; 
-
+            isReviewingFromResults = reviewMode;
             questionNumberEl.textContent = index + 1;
             questionNumberInfoEl.textContent = `${index + 1} of ${questions.length}`;
             questionTextEl.textContent = question.text;
-             if (questionContainer) questionContainer.scrollTop = 0; 
+            document.querySelector('.question-column').scrollTop = 0;
 
             optionsContainer.innerHTML = '';
-            reviewExplanationContainer.innerHTML = ''; 
-            const optionLetters = ['A', 'B', 'C', 'D', 'E']; 
+            reviewExplanationContainer.innerHTML = '';
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
             question.options.forEach((option, i) => {
                 const optionId = `q${index}_opt${i}`;
                 const label = document.createElement('label');
                 label.htmlFor = optionId;
-                label.classList.add('option-label');
-                label.dataset.optionIndex = i; 
+                label.className = 'option-label';
+                label.dataset.optionIndex = i;
 
                 const radio = document.createElement('input');
                 radio.type = 'radio';
                 radio.id = optionId;
                 radio.name = `question_${index}`;
-                radio.value = optionLetters[i]; 
-                radio.disabled = reviewMode; 
-
-                label.classList.remove('border-green-500', 'border-red-500', 'border-2', 'bg-green-50', 'bg-red-50', 'selected-answer');
+                radio.value = optionLetters[i];
+                radio.disabled = reviewMode;
                 label.style.cursor = reviewMode ? 'default' : 'pointer';
-
 
                 if (userAnswers[index] === optionLetters[i]) {
                     radio.checked = true;
                     label.classList.add('selected-answer');
                 }
-                
+
                 if (reviewMode) {
                     const isCorrectAnswer = question.correctAnswer === optionLetters[i];
                     const isSelectedAnswer = userAnswers[index] === optionLetters[i];
-
                     if (isCorrectAnswer) {
-                        label.classList.add('border-green-500', 'border-2'); 
-                        if (!isSelectedAnswer) label.classList.add('bg-green-50'); 
-                    } else if (isSelectedAnswer) { 
+                        label.classList.add('border-green-500', 'border-2', 'bg-green-50');
+                    } else if (isSelectedAnswer) {
                         label.classList.add('border-red-500', 'border-2', 'bg-red-50');
                     }
                 }
 
                 label.appendChild(radio);
-                const textNode = document.createTextNode(` ${optionLetters[i]}) ${option}`);
-                label.appendChild(textNode);
+                label.appendChild(document.createTextNode(` ${optionLetters[i]}) ${option}`));
 
                 if (!reviewMode) {
-                    label.addEventListener('click', (e) => {
-                        if (e.target.tagName !== 'INPUT') {
-                            handleOptionSelect(index, i, optionLetters[i]);
-                        }
-                    });
+                    label.addEventListener('click', () => handleOptionSelect(index, i, optionLetters[i]));
                     radio.addEventListener('change', () => handleOptionSelect(index, i, optionLetters[i]));
                 }
                 optionsContainer.appendChild(label);
             });
-            
+
             if (reviewMode && question.explanation) {
                 const explanationDiv = document.createElement('div');
-                explanationDiv.classList.add('explanation-box'); 
-                explanationDiv.innerHTML = `<strong class="font-semibold">Explanation:</strong><br>${question.explanation.replace(/\n/g, '<br>')}`; 
+                explanationDiv.className = 'explanation-box';
+                explanationDiv.innerHTML = `<strong class="font-semibold">Explanation:</strong><br>${question.explanation.replace(/\n/g, '<br>')}`;
                 reviewExplanationContainer.appendChild(explanationDiv);
             }
 
             prevButton.disabled = index === 0;
-            if (!reviewMode && index === questions.length - 1) { 
-                nextButton.textContent = 'Finish & Review';
-                nextButton.disabled = false;
-            } else if (!reviewMode) { 
-                nextButton.textContent = 'Next (Alt+N) →';
-                nextButton.disabled = false;
-            } else { 
-                nextButton.disabled = index === questions.length - 1;
-                if (!nextButton.disabled) nextButton.textContent = 'Next →'; 
-            }
+            nextButton.textContent = (!reviewMode && index === questions.length - 1) ? 'Finish & Review' : 'Next (Alt+N) →';
+            if(reviewMode) nextButton.disabled = index === questions.length - 1;
 
             updateFlagButtonAppearance();
-            
-            if (reviewMode) {
-                backToResultsButton.classList.remove('hidden');
-                endExamButtonFooter.classList.add('hidden');
-                examTitleEl.textContent = "Reviewing Question";
-                prevButton.disabled = index === 0; 
-                navigatorButton.disabled = false; 
-                flagButton.disabled = true; 
-            } else { 
-                backToResultsButton.classList.add('hidden');
-                endExamButtonFooter.classList.remove('hidden');
-                examTitleEl.textContent = "Verbal Reasoning";
-                navigatorButton.disabled = false;
-                flagButton.disabled = false;
-                prevButton.disabled = index === 0;
-            }
+
+            backToResultsButton.classList.toggle('hidden', !reviewMode);
+            endExamButtonFooter.classList.toggle('hidden', reviewMode);
+            examTitleEl.textContent = reviewMode ? "Reviewing Question" : "Verbal Reasoning";
+            flagButton.disabled = reviewMode;
 
             updateNavigatorHighlight();
-            updateFontSize(); // Apply font size on question load
-            
-            if (!isReviewingFromResults) { 
-                questionStartTime = Date.now();
-            }
+            updateFontSize();
+            if (!isReviewingFromResults) { questionStartTime = Date.now(); }
         }
 
         function handleOptionSelect(questionIndex, optionIndex, optionValue) {
              if (questionIndex !== currentQuestionIndex || isReviewingFromResults) return;
              userAnswers[questionIndex] = optionValue;
-
-             document.querySelectorAll(`#options-container .option-label`).forEach(lbl => {
-                 lbl.classList.remove('selected-answer');
-                 const radio = lbl.querySelector('input[type="radio"]');
-                 if(radio) radio.checked = false; 
-             });
-
+             document.querySelectorAll(`#options-container .option-label`).forEach(lbl => lbl.classList.remove('selected-answer'));
              const selectedLabel = document.querySelector(`#options-container label[for="q${questionIndex}_opt${optionIndex}"]`);
-              if (selectedLabel) {
+             if (selectedLabel) {
                  selectedLabel.classList.add('selected-answer');
-                 const radio = selectedLabel.querySelector('input[type="radio"]');
-                 if (radio) radio.checked = true; 
-              }
-             updateNavigatorButtons(); 
+                 selectedLabel.querySelector('input[type="radio"]').checked = true;
+             }
+             updateNavigatorButtons();
         }
 
         function showNextQuestion() {
-            if (isReviewingFromResults) { 
-                if (currentQuestionIndex < questions.length - 1) {
-                    loadQuestion(currentQuestionIndex + 1, true); 
-                }
-            }
-            else if (!isReviewingFromResults) { 
-                 recordTimeSpent(currentQuestionIndex); 
-                 if (currentQuestionIndex === questions.length - 1) { 
-                     stopTimer(); 
-                     showReviewScreen(); 
-                 } else if (currentQuestionIndex < questions.length - 1) {
-                     loadQuestion(currentQuestionIndex + 1); 
-                 }
+            const reviewMode = isReviewingFromResults;
+            const nextIndex = currentQuestionIndex + 1;
+            if (nextIndex < questions.length) {
+                loadQuestion(nextIndex, reviewMode);
+            } else if (!reviewMode) {
+                recordTimeSpent(currentQuestionIndex);
+                stopTimer();
+                showReviewScreen();
             }
         }
 
         function showPrevQuestion() {
-             if (isReviewingFromResults) { 
-                 if (currentQuestionIndex > 0) {
-                     loadQuestion(currentQuestionIndex - 1, true); 
-                 }
-             }
-            else if (currentQuestionIndex > 0 && !isReviewingFromResults) { 
-                 recordTimeSpent(currentQuestionIndex); 
-                 loadQuestion(currentQuestionIndex - 1);
+            if (currentQuestionIndex > 0) {
+                loadQuestion(currentQuestionIndex - 1, isReviewingFromResults);
             }
         }
 
-        function showSetupScreen() {
-            setupScreen.classList.remove('hidden');
-            examScreen.classList.add('hidden');
-            reviewScreen.classList.add('hidden');
-            resultsScreen.classList.add('hidden');
-            appContainer.classList.remove('flex', 'flex-col'); 
-            currentlyDisplayedPassageIndex = -1; 
-            
-            if (setupQuestionCountEl) setupQuestionCountEl.textContent = questions.length;
-            if (setupTimeLimitEl) setupTimeLimitEl.textContent = `${Math.floor(timeLeft / 60)} minutes`;
-        }
+        function showScreen(screenToShow) {
+            [setupScreen, examScreen, reviewScreen, resultsScreen].forEach(screen => {
+                screen.classList.add('hidden');
+                screen.classList.remove('flex');
+            });
+            screenToShow.classList.remove('hidden');
+            if (screenToShow !== examScreen) appContainer.classList.remove('!border-none', '!shadow-none', '!m-0', '!rounded-none');
+            else appContainer.classList.add('!border-none', '!shadow-none', '!m-0', '!rounded-none');
 
-        function showExamScreen() {
-            setupScreen.classList.add('hidden');
-            examScreen.classList.remove('hidden');
-            examScreen.classList.add('flex'); 
-            reviewScreen.classList.add('hidden');
-            resultsScreen.classList.add('hidden');
-            appContainer.classList.add('flex', 'flex-col'); 
-            currentlyDisplayedPassageIndex = -1; 
+            if (screenToShow === setupScreen || screenToShow === resultsScreen) {
+                 screenToShow.classList.add('flex');
+            }
         }
 
         function showReviewScreen(filterFlagged = false) {
-            recordTimeSpent(currentQuestionIndex); 
-            stopTimer(); 
+            recordTimeSpent(currentQuestionIndex);
+            stopTimer();
+            showScreen(reviewScreen);
+            reviewScreen.classList.add('flex'); // Keep flex for review screen
 
-            examScreen.classList.add('hidden');
-            reviewScreen.classList.remove('hidden');
-            reviewScreen.classList.add('flex');
-            resultsScreen.classList.add('hidden');
-            setupScreen.classList.add('hidden');
-            appContainer.classList.add('flex', 'flex-col');
-
-            reviewGrid.innerHTML = ''; 
+            reviewGrid.innerHTML = '';
             questions.forEach((_, index) => {
-                 if (filterFlagged && !flaggedQuestions[index]) { 
-                     return;
-                 }
+                if (filterFlagged && !flaggedQuestions[index]) return;
                 const button = document.createElement('button');
                 button.textContent = index + 1;
-                button.className = 'review-grid-button'; 
-                if (userAnswers[index] !== null && userAnswers[index] !== undefined) {
-                    button.classList.add('review-grid-button-answered');
-                } else {
-                     button.classList.add('review-grid-button-unanswered');
-                }
-                if (flaggedQuestions[index]) {
-                    button.classList.add('review-flagged'); 
-                }
+                button.className = 'review-grid-button';
+                button.classList.toggle('review-grid-button-answered', userAnswers[index] !== null);
+                button.classList.toggle('review-grid-button-unanswered', userAnswers[index] === null);
+                if (flaggedQuestions[index]) button.classList.add('review-flagged');
                 button.onclick = () => {
-                    reviewScreen.classList.add('hidden'); 
-                    reviewScreen.classList.remove('flex');
-                    showExamScreen(); 
-                    loadQuestion(index); 
-                    startTimer(); 
+                    showScreen(examScreen);
+                    examScreen.classList.add('flex');
+                    loadQuestion(index);
+                    startTimer();
                 };
                 reviewGrid.appendChild(button);
             });
-             filterFlaggedButton.textContent = filterFlagged ? 'Show All Questions' : 'Show Flagged Only';
+            filterFlaggedButton.textContent = filterFlagged ? 'Show All Questions' : 'Show Flagged Only';
         }
 
         function populateNavigator() {
-             navigatorGrid.innerHTML = ''; 
+             navigatorGrid.innerHTML = '';
              questions.forEach((_, index) => {
                  const button = document.createElement('button');
                  button.textContent = index + 1;
-                 button.classList.add('py-2', 'px-1', 'border', 'border-gray-300', 'rounded-md', 'text-center', 'transition', 'duration-150', 'ease-in-out', 'text-sm', 'hover:bg-gray-100');
-                 button.dataset.questionIndex = index; 
+                 button.className = 'py-2 px-1 border border-gray-300 rounded-md text-center transition duration-150 ease-in-out text-sm hover:bg-gray-100';
+                 button.dataset.questionIndex = index;
                  if (userAnswers[index]) button.classList.add('nav-answered');
                  if (index === currentQuestionIndex) button.classList.add('nav-current');
                  if (flaggedQuestions[index]) button.classList.add('nav-flagged');
                  button.onclick = () => {
-                     navigatorModal.classList.remove('flex'); 
-                     navigatorModal.classList.add('hidden');
-                     const targetIndex = parseInt(button.dataset.questionIndex, 10);
-                     loadQuestion(targetIndex, isReviewingFromResults);
-                     if (!isReviewingFromResults) questionStartTime = Date.now(); 
+                     navigatorModal.classList.remove('flex');
+                     loadQuestion(parseInt(button.dataset.questionIndex, 10), isReviewingFromResults);
+                     if (!isReviewingFromResults) questionStartTime = Date.now();
                  };
                  navigatorGrid.appendChild(button);
              });
         }
 
         function updateNavigatorButtons() {
-             if (!navigatorGrid) return;
-             const buttons = navigatorGrid.querySelectorAll('button');
-             buttons.forEach(button => {
+             navigatorGrid.querySelectorAll('button').forEach(button => {
                  const index = parseInt(button.dataset.questionIndex, 10);
-                 button.classList.remove('nav-answered', 'nav-current', 'nav-flagged'); 
-                 if (userAnswers[index]) button.classList.add('nav-answered');
-                 if (index === currentQuestionIndex) button.classList.add('nav-current');
-                 if (flaggedQuestions[index]) button.classList.add('nav-flagged');
+                 button.classList.toggle('nav-answered', !!userAnswers[index]);
+                 button.classList.toggle('nav-current', index === currentQuestionIndex);
+                 button.classList.toggle('nav-flagged', flaggedQuestions[index]);
              });
         }
 
         function updateNavigatorHighlight() {
-             if (!navigatorGrid) return;
-             const buttons = navigatorGrid.querySelectorAll('button');
-             buttons.forEach(button => {
-                 const index = parseInt(button.dataset.questionIndex, 10);
-                 button.classList.remove('nav-current');
-                 if (index === currentQuestionIndex) button.classList.add('nav-current');
-             });
+            navigatorGrid.querySelectorAll('button').forEach(button => {
+                button.classList.toggle('nav-current', parseInt(button.dataset.questionIndex, 10) === currentQuestionIndex);
+            });
         }
 
         function analyzeAndDisplayPerformance() {
-            // Time Analysis
             let correctTimeTotal = 0, correctCount = 0, incorrectTimeTotal = 0, incorrectCount = 0;
-            // Question Type Analysis
             const typeStats = {};
 
             questions.forEach((q, i) => {
                 const isCorrect = userAnswers[i] === q.correctAnswer;
-                const answered = userAnswers[i] !== null;
-                const time = questionTimes[i] || 0;
-                
-                if (answered) {
-                    if (isCorrect) {
-                        correctTimeTotal += time;
-                        correctCount++;
-                    } else {
-                        incorrectTimeTotal += time;
-                        incorrectCount++;
-                    }
+                if (userAnswers[i] !== null) {
+                    (isCorrect ? (correctTimeTotal += questionTimes[i], correctCount++) : (incorrectTimeTotal += questionTimes[i], incorrectCount++));
                 }
-
                 const qType = q.type || 'Uncategorized';
-                if (!typeStats[qType]) {
-                    typeStats[qType] = { correct: 0, total: 0 };
-                }
+                if (!typeStats[qType]) typeStats[qType] = { correct: 0, total: 0 };
                 typeStats[qType].total++;
-                if(isCorrect) {
-                    typeStats[qType].correct++;
-                }
+                if(isCorrect) typeStats[qType].correct++;
             });
-            
-            // Display Time Analysis
-            const avgCorrectTime = correctCount > 0 ? formatTimeMilliseconds(correctTimeTotal / correctCount) : 'N/A';
-            const avgIncorrectTime = incorrectCount > 0 ? formatTimeMilliseconds(incorrectTimeTotal / incorrectCount) : 'N/A';
+
             timeAnalysisResultsEl.innerHTML = `
-                <p>Avg. time (Correct): <span class="font-bold text-green-600">${avgCorrectTime}</span></p>
-                <p>Avg. time (Incorrect): <span class="font-bold text-red-600">${avgIncorrectTime}</span></p>
-            `;
-            
-            // Display Type Analysis
+                <p class="flex justify-between"><span>Avg. time (Correct):</span> <span class="font-bold text-green-600">${correctCount > 0 ? formatTimeMilliseconds(correctTimeTotal / correctCount) : 'N/A'}</span></p>
+                <p class="flex justify-between"><span>Avg. time (Incorrect):</span> <span class="font-bold text-red-600">${incorrectCount > 0 ? formatTimeMilliseconds(incorrectTimeTotal / incorrectCount) : 'N/A'}</span></p>`;
+
             typeAnalysisResultsEl.innerHTML = '';
             Object.keys(typeStats).sort().forEach(type => {
                 const stats = typeStats[type];
                 const percentage = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
-                const p = document.createElement('p');
-                p.innerHTML = `${type}: <span class="font-bold">${stats.correct}/${stats.total} (${percentage}%)</span>`;
-                typeAnalysisResultsEl.appendChild(p);
+                typeAnalysisResultsEl.innerHTML += `<p class="flex justify-between"><span>${type}:</span> <span class="font-bold">${stats.correct}/${stats.total} (${percentage}%)</span></p>`;
             });
         }
 
         function showResultsScreen() {
-            examEndTime = examEndTime || new Date(); 
-            recordTimeSpent(currentQuestionIndex); 
-            stopTimer(); 
-
-            examScreen.classList.add('hidden');
-            reviewScreen.classList.add('hidden');
-            reviewScreen.classList.remove('flex');
-            resultsScreen.classList.remove('hidden');
-            resultsScreen.classList.add('flex');
-            setupScreen.classList.add('hidden');
-            appContainer.classList.add('flex', 'flex-col');
+            examEndTime = examEndTime || new Date();
+            recordTimeSpent(currentQuestionIndex);
+            stopTimer();
+            showScreen(resultsScreen);
 
             let score = 0;
-            resultsGridContainer.innerHTML = ''; 
-
+            resultsGridContainer.innerHTML = '';
             questions.forEach((qData, index) => {
-                const userAnswer = userAnswers[index];
-                const correctAnswer = qData.correctAnswer;
-                const isCorrect = userAnswer !== null && userAnswer !== undefined && userAnswer === correctAnswer;
+                const isCorrect = userAnswers[index] === qData.correctAnswer;
                 if (isCorrect) score++;
 
-                const timeSpentMs = questionTimes[index] || 0; 
-                const timeSpentSec = Math.round(timeSpentMs / 1000);
-
+                const container = document.createElement('div');
                 const resultBox = document.createElement('div');
-                resultBox.classList.add('result-box');
+                resultBox.className = 'result-box';
                 resultBox.classList.add(isCorrect ? 'result-box-correct' : 'result-box-incorrect');
-                if (flaggedQuestions[index]) {
-                    resultBox.classList.add('result-box-flagged');
-                }
-                resultBox.dataset.index = index; 
+                if (flaggedQuestions[index]) resultBox.classList.add('result-box-flagged');
                 resultBox.title = `Click to review Question ${index + 1}`;
 
                 const timeDiv = document.createElement('div');
-                timeDiv.classList.add('time-spent');
-                timeDiv.textContent = `${timeSpentSec}s`;
+                timeDiv.className = 'time-spent';
+                timeDiv.textContent = `${Math.round((questionTimes[index] || 0) / 1000)}s`;
                 resultBox.appendChild(timeDiv);
-
-                const container = document.createElement('div');
-                container.style.display = 'flex';
-                container.style.flexDirection = 'column';
-                container.style.alignItems = 'center';
                 container.appendChild(resultBox);
 
                 const qNumDiv = document.createElement('div');
-                qNumDiv.classList.add('question-num-label');
+                qNumDiv.className = 'question-num-label';
                 qNumDiv.textContent = `Q${index + 1}`;
                 container.appendChild(qNumDiv);
-                
-                container.addEventListener('click', () => {
-                    revisitQuestionFromResults(index);
-                });
+
+                container.addEventListener('click', () => revisitQuestionFromResults(index));
                 resultsGridContainer.appendChild(container);
             });
 
             scoreEl.textContent = score;
             totalQuestionsResultsEl.textContent = questions.length;
-            const timeDiff = examEndTime - examStartTime;
-            timeTakenEl.textContent = formatTimeDifference(timeDiff);
-
+            timeTakenEl.textContent = formatTimeDifference(examEndTime - examStartTime);
             analyzeAndDisplayPerformance();
         }
 
-
         function revisitQuestionFromResults(index) {
-            resultsScreen.classList.add('hidden');
-            resultsScreen.classList.remove('flex');
-            showExamScreen();
-            loadQuestion(index, true); 
+            showScreen(examScreen);
+            examScreen.classList.add('flex');
+            loadQuestion(index, true);
         }
 
         function endExamAndShowResults() {
-            stopTimer(); 
+            stopTimer();
             showResultsScreen();
         }
-        function handleEndExamFooterClick() {
-             recordTimeSpent(currentQuestionIndex); 
-             stopTimer();
-             showReviewScreen(); 
-        }
 
-        
         function generatePDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            const reflection1 = document.getElementById('reflection-q1').value.trim();
-            const reflection2 = document.getElementById('reflection-q2').value.trim();
-            const reflection3 = document.getElementById('reflection-q3').value.trim();
-            const finalScore = scoreEl.textContent;
-            const totalQ = totalQuestionsResultsEl.textContent; 
-            const timeTaken = timeTakenEl.textContent;
+             const { jsPDF } = window.jspdf;
+             const doc = new jsPDF();
+             let y = 15;
+             const lineHeight = 7;
+             const margin = 15;
+             const pageWidth = doc.internal.pageSize.width;
 
-            let y = 15; 
-            const lineHeight = 7;
-            const pageHeight = doc.internal.pageSize.height;
-            const margin = 15;
-            const pageWidth = doc.internal.pageSize.width;
+             doc.setFontSize(18);
+             doc.text("UCAT Verbal Reasoning Results", pageWidth / 2, y, { align: 'center' });
+             y += lineHeight * 2;
 
-
-            doc.setFontSize(18);
-            doc.text("UCAT Verbal Reasoning Results", pageWidth / 2, y, { align: 'center' });
-            y += lineHeight * 2;
-
-            doc.setFontSize(12);
-            const summaryData = [
-                ["Name:", userName || 'N/A'],
-                ["Goal:", `${userGoal || 'N/A'} / ${totalQ}`],
-                ["Focus Area:", userFocusArea || 'N/A'],
-                ["Final Score:", `${finalScore} / ${totalQ}`],
-                ["Time Taken:", timeTaken]
-            ];
-            summaryData.forEach(row => {
-                if (y > pageHeight - margin - lineHeight) { doc.addPage(); y = margin; }
-                doc.setFont(undefined, 'bold');
-                doc.text(row[0], margin, y);
-                doc.setFont(undefined, 'normal');
-                doc.text(row[1], margin + 40, y);
-                y += lineHeight;
-            });
-            y += lineHeight; 
-
-            // Add Granular Reflections to PDF
-            doc.setFontSize(14);
-            doc.setFont(undefined, 'bold');
-            doc.text("Reflections", margin, y);
-            y += lineHeight;
-            
-            const reflections = [
-                {q: document.getElementById('reflection-q1').previousElementSibling.textContent, a: reflection1},
-                {q: document.getElementById('reflection-q2').previousElementSibling.textContent, a: reflection2},
-                {q: document.getElementById('reflection-q3').previousElementSibling.textContent, a: reflection3},
-            ];
-
-            reflections.forEach(item => {
-                if (y > pageHeight - margin - (lineHeight*4)) { doc.addPage(); y = margin; }
-                doc.setFontSize(10);
-                doc.setFont(undefined, 'bold');
-                doc.text(item.q, margin, y);
-                y += lineHeight * 0.9;
-                doc.setFont(undefined, 'normal');
-                const answerLines = doc.splitTextToSize(item.a || 'No answer provided.', pageWidth - margin * 2);
-                answerLines.forEach(line => {
-                    if (y > pageHeight - margin - lineHeight) { doc.addPage(); y = margin; }
-                    doc.text(line, margin, y);
-                    y += (lineHeight * 0.8);
-                });
-                y += lineHeight;
-            });
-
-            // Add Detailed Results
-            if (y > pageHeight - margin - (lineHeight*2)) { doc.addPage(); y = margin; }
-            doc.setFontSize(14);
-            doc.setFont(undefined, 'bold');
-            doc.text("Detailed Results:", margin, y);
-            y += lineHeight * 1.5;
-            doc.setFontSize(9); 
-            doc.setFont(undefined, 'normal');
-
-            questions.forEach((qData, index) => {
-                const userAnswer = userAnswers[index];
-                const correctAnswer = qData.correctAnswer;
-                const isCorrect = userAnswer !== null && userAnswer !== undefined && userAnswer === correctAnswer;
-                const status = isCorrect ? "Correct" : (userAnswer ? "Incorrect" : "Not Answered");
-                const timeSpentSec = Math.round((questionTimes[index] || 0) / 1000);
-                const questionDetails = [
-                     `Q${index + 1} (${qData.type}): ${qData.text.substring(0, 50)}...${flaggedQuestions[index] ? ' (Flagged)' : ''}`,
-                     `  Your Answer: ${userAnswer || 'N/A'}`,
-                     `  Correct Answer: ${correctAnswer}`,
-                     `  Status: ${status}`,
-                     `  Time: ${timeSpentSec}s`
-                ];
-                const blockHeight = questionDetails.length * (lineHeight * 0.75) + (qData.explanation ? 3 * (lineHeight*0.75) : 0);
-                if (y + blockHeight > pageHeight - margin) {
-                    doc.addPage();
-                    y = margin; 
-                    doc.setFontSize(14); doc.setFont(undefined, 'bold');
-                    doc.text("Detailed Results (Continued):", margin, y);
-                    y += lineHeight * 1.5;
-                    doc.setFontSize(9); doc.setFont(undefined, 'normal');
-                }
-                questionDetails.forEach(detailLine => {
-                    doc.text(detailLine, margin, y);
-                    y += (lineHeight * 0.75);
-                });
-                if (qData.explanation) {
-                    const explLines = doc.splitTextToSize(`  Explanation: ${qData.explanation.replace(/\n/g, ' ')}`, pageWidth - (margin * 2.5)); 
-                    explLines.forEach(explLine => {
-                         if (y > pageHeight - margin - lineHeight) { doc.addPage(); y = margin; }
-                         doc.text(explLine, margin + 5, y); 
-                         y += (lineHeight * 0.75);
-                    });
-                }
-                y += (lineHeight * 0.5); 
-            });
+             doc.setFontSize(12);
+             const summaryData = [
+                 ["Name:", userName || 'N/A'],
+                 ["Goal:", `${userGoal || 'N/A'} / ${questions.length}`],
+                 ["Focus Area:", userFocusArea || 'N/A'],
+                 ["Final Score:", `${scoreEl.textContent} / ${questions.length}`],
+                 ["Time Taken:", timeTakenEl.textContent]
+             ];
+             summaryData.forEach(row => {
+                 doc.setFont(undefined, 'bold');
+                 doc.text(row[0], margin, y);
+                 doc.setFont(undefined, 'normal');
+                 doc.text(row[1], margin + 40, y);
+                 y += lineHeight;
+             });
+             y += lineHeight;
 
             doc.save(`ucat_vr_results_${userName.replace(/\s+/g, '_') || 'user'}.pdf`);
         }
-
 
         // --- Event Listeners ---
         startButton.addEventListener('click', () => {
             userName = nameInput.value.trim();
             userGoal = goalInput.value.trim();
             userFocusArea = focusAreaInput.value.trim();
-            
-            timeLeft = 10 * 60; 
-            userAnswers = new Array(questions.length).fill(null);
-            questionTimes = new Array(questions.length).fill(0);
-            flaggedQuestions = new Array(questions.length).fill(false);
-            questionStartTime = null;
-            currentQuestionIndex = 0;
-            isReviewingFromResults = false;
-            isFilteringFlagged = false; 
-            currentlyDisplayedPassageIndex = -1; 
-
-            showExamScreen();
-            startTimer(); 
+            showScreen(examScreen);
+            examScreen.classList.add('flex');
+            startTimer();
             loadQuestion(0);
-            populateNavigator(); 
+            populateNavigator();
         });
 
         nextButton.addEventListener('click', showNextQuestion);
         prevButton.addEventListener('click', showPrevQuestion);
-        endExamButton.addEventListener('click', endExamAndShowResults); 
-        endExamButtonFooter.addEventListener('click', handleEndExamFooterClick); 
-        backToResultsButton.addEventListener('click', () => {
-            isReviewingFromResults = false; 
-            showResultsScreen(); 
-        });
-        navigatorButton.addEventListener('click', () => {
-             recordTimeSpent(currentQuestionIndex); 
-             updateNavigatorButtons(); 
-             navigatorModal.classList.remove('hidden');
-             navigatorModal.classList.add('flex');
-        });
-        closeModalButton.addEventListener('click', () => {
-             navigatorModal.classList.remove('flex');
-             navigatorModal.classList.add('hidden');
-             if (!isReviewingFromResults) questionStartTime = Date.now(); 
-        });
-        
-        navigatorModal.addEventListener('click', (event) => {
-            if (event.target === navigatorModal) closeModalButton.click();
-        });
-
+        endExamButton.addEventListener('click', endExamAndShowResults);
+        endExamButtonFooter.addEventListener('click', () => { recordTimeSpent(currentQuestionIndex); stopTimer(); showReviewScreen(); });
+        backToResultsButton.addEventListener('click', () => { isReviewingFromResults = false; showResultsScreen(); });
+        navigatorButton.addEventListener('click', () => { recordTimeSpent(currentQuestionIndex); updateNavigatorButtons(); navigatorModal.classList.add('flex'); });
+        closeModalButton.addEventListener('click', () => { navigatorModal.classList.remove('flex'); if (!isReviewingFromResults) questionStartTime = Date.now(); });
+        navigatorModal.addEventListener('click', (event) => { if (event.target === navigatorModal) closeModalButton.click(); });
         flagButton.addEventListener('click', toggleFlag);
-
-        filterFlaggedButton.addEventListener('click', () => {
-            isFilteringFlagged = !isFilteringFlagged;
-            showReviewScreen(isFilteringFlagged); 
-        });
-        
+        filterFlaggedButton.addEventListener('click', () => { isFilteringFlagged = !isFilteringFlagged; showReviewScreen(isFilteringFlagged); });
         downloadPdfButton.addEventListener('click', generatePDF);
+        fontIncreaseButton.addEventListener('click', () => { if(currentFontSize < 1.5) { currentFontSize += 0.1; updateFontSize(); } });
+        fontDecreaseButton.addEventListener('click', () => { if (currentFontSize > 0.8) { currentFontSize -= 0.1; updateFontSize(); } });
 
-        fontIncreaseButton.addEventListener('click', () => {
-            if(currentFontSize < 1.5) { // Max font size
-                currentFontSize += 0.1;
-                updateFontSize();
-            }
-        });
-
-        fontDecreaseButton.addEventListener('click', () => {
-            if (currentFontSize > 0.8) { // Min font size
-                currentFontSize -= 0.1;
-                updateFontSize();
-            }
-        });
-
-        
-        function handleKeyboardShortcuts(e) {
+        document.addEventListener('keydown', (e) => {
              const isExamVisible = !examScreen.classList.contains('hidden');
              const isModalVisible = navigatorModal.classList.contains('flex');
              const isInputFocused = document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA');
-
-             if (isModalVisible || isInputFocused) return; 
-             if (!isExamVisible) return; 
-
-             const key = e.key.toLowerCase();
-             const altOrOption = e.altKey; 
-             const code = e.code.toLowerCase(); 
-
-             if (altOrOption) {
-                 switch (code) { 
-                     case 'keyn': 
-                         e.preventDefault();
-                         if (!nextButton.disabled) nextButton.click();
-                         return;
-                     case 'keyp': 
-                         e.preventDefault();
-                         if (!prevButton.disabled) prevButton.click();
-                         return;
-                     case 'keyf': 
-                         e.preventDefault();
-                         if (!isReviewingFromResults && !flagButton.disabled) flagButton.click();
-                         return;
-                     default:
-                         return; 
-                 }
-             } else { 
-                 if (['a', 'b', 'c', 'd'].includes(key) && !isReviewingFromResults) {
-                     e.preventDefault();
-                     const optionIndex = ['a', 'b', 'c', 'd'].indexOf(key);
-                     const optionValue = ['A', 'B', 'C', 'D'][optionIndex];
-                     const currentQuestionData = questions[currentQuestionIndex];
-                     if (optionIndex < currentQuestionData.options.length) { 
-                         handleOptionSelect(currentQuestionIndex, optionIndex, optionValue);
-                     }
-                     return;
+             if (isModalVisible || isInputFocused || !isExamVisible) return;
+             if (e.altKey) {
+                 if (e.code.toLowerCase() === 'keyn') { e.preventDefault(); if (!nextButton.disabled) nextButton.click(); }
+                 if (e.code.toLowerCase() === 'keyp') { e.preventDefault(); if (!prevButton.disabled) prevButton.click(); }
+                 if (e.code.toLowerCase() === 'keyf') { e.preventDefault(); if (!isReviewingFromResults && !flagButton.disabled) flagButton.click(); }
+             } else if (['a', 'b', 'c', 'd'].includes(e.key.toLowerCase()) && !isReviewingFromResults) {
+                 e.preventDefault();
+                 const optionIndex = ['a', 'b', 'c', 'd'].indexOf(e.key.toLowerCase());
+                 if (optionIndex < questions[currentQuestionIndex].options.length) {
+                     handleOptionSelect(currentQuestionIndex, optionIndex, ['A', 'B', 'C', 'D'][optionIndex]);
                  }
              }
-        }
-
-        document.addEventListener('keydown', handleKeyboardShortcuts);
+        });
 
         // --- Initial Load ---
-        showSetupScreen(); // Start with the setup screen
-        updateFontSize(); // Set initial font size
+        showScreen(setupScreen);
+        updateFontSize();
 
     </script>
 </body>
