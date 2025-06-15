@@ -135,10 +135,16 @@
 
         /* Results Screen Grid */
         #results-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 0.75rem; padding: 1rem 0; width: 100%; }
-        .result-box { display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1 / 1; padding: 0.25rem; border-radius: 0.5rem; color: white; text-align: center; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); width: 100%; height: auto; }
+        .result-box { display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 1 / 1; padding: 0.25rem; border-radius: 0.5rem; color: white; text-align: center; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); width: 100%; height: auto; border: none; }
         .result-box:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
-        .result-box-correct { background-color: #22c55e; border: 1px solid #16a34a; }
-        .result-box-incorrect { background-color: #ef4444; border: 1px solid #dc2626; }
+        
+        /* UPDATED: Gradient colors for result boxes */
+        .result-box-correct {
+            background: linear-gradient(145deg, #22c55e, #15803d);
+        }
+        .result-box-incorrect {
+            background: linear-gradient(145deg, #ef4444, #b91c1c);
+        }
         .result-box-flagged { outline: 3px solid #f59e0b; outline-offset: 2px; }
         .result-box .time-spent { font-size: 1rem; font-weight: 600; line-height: 1.1; }
         .question-num-label { font-size: 0.75rem; color: #4b5563; text-align: center; width: 100%; margin-top: 0.25rem; }
@@ -171,7 +177,7 @@
                     <p class="text-gray-600 mt-2 text-lg mb-8">Sharpen your skills for the UCAT VR section.</p>
                     <div class="text-left space-y-3 mb-8 bg-blue-50/50 border border-blue-200/50 rounded-lg p-4">
                         <p class="text-sm text-gray-800"><strong class="font-semibold">Questions:</strong> <span id="setup-question-count">16</span></p>
-                        <p class="text-sm text-gray-800"><strong class="font-semibold">Time Limit:</strong> <span id="setup-time-limit">10 minutes</span></p>
+                        <p class="text-sm text-gray-800"><strong class="font-semibold">Time Limit:</strong> <span id="setup-time-limit">9 minutes</span></p>
                     </div>
 
                     <div class="space-y-6 text-left">
@@ -209,7 +215,7 @@
                         <button id="font-decrease-button" class="font-size-button">A-</button>
                         <button id="font-increase-button" class="font-size-button">A+</button>
                     </div>
-                    <div id="timer" class="text-base px-3 py-1 rounded-md">10:00</div>
+                    <div id="timer" class="text-base px-3 py-1 rounded-md">9:00</div>
                     <span class="text-sm">Question <span id="question-number-info">1</span> of 16</span>
                     <button id="flag-button" class="text-sm font-medium border border-white rounded px-2 py-1 transition-colors duration-150">
                           Flag for Review
@@ -362,11 +368,11 @@
             { passageIndex: 3, type: 'Purpose/Inference', text: "In context, likening memory to \"a migratory bird\" chiefly", options: ["conveys its unpredictable arrival and departure, shaping the narrator's emotions.", "suggests memories should be caged and controlled.", "criticises bird imagery as clichéd in grieving narratives.", "indicates the narrator's newfound interest in ornithology."], correctAnswer: "A", explanation: `The metaphor describes memory landing "gently" some days while on others it "startles... and leaves." This directly conveys the unpredictable nature of memory and its emotional impact, which aligns perfectly with option A. Option B (caging) is the opposite of her "open windows" approach. Options C and D introduce ideas not mentioned in the passage.` }
         ];
 
-        // --- State & Elements (unchanged from previous version) ---
+        // --- State ---
         let currentQuestionIndex = 0;
         let userAnswers = new Array(questions.length).fill(null);
         let timerInterval;
-        let timeLeft = 10 * 60;
+        let timeLeft = 9 * 60; // UPDATED: 9 minutes in seconds
         let examStartTime;
         let examEndTime;
         let userName = '';
@@ -423,7 +429,7 @@
         const timeAnalysisResultsEl = document.getElementById('time-analysis-results');
         const typeAnalysisResultsEl = document.getElementById('type-analysis-results');
 
-        // --- Functions (unchanged from previous version, with minor tweaks for new UI) ---
+        // --- Functions (unchanged logic) ---
 
         function startTimer() {
             examStartTime = new Date();
